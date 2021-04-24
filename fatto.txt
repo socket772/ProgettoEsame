@@ -1,9 +1,0 @@
-visualizzaInventario
-visualizzaFornitori
-visualizzaOrdini
-visualizzaRichieste
-modifica e aggiunta inventario e fornitori
-
-manca
-genera ordine
-add/visual uffici

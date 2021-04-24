@@ -23,21 +23,11 @@
 	
 	while($row = mysqli_fetch_assoc($resultInventario))
 	{
-//		$quantitaRichiesta = $row['scortaMinima']-$row['scorta']+$row['ordine']+0;
-//		$prezzo = $quantitaRichiesta*$row['prezzoUnitario'];
-		$sql = "INSERT INTO Ordini (quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore, data) VALUES ('".$quantitaRichiesta."', '".$row['codice']."', '".$row['descrizione']."', '".$prezzo."', '".$row['codiceFornitore']."')";
+		$quantitaRichiesta = $row['scortaMinima']-$row['scorta']+$row['ordine']+0;
+		$prezzo = $quantitaRichiesta*$row['prezzoUnitario'];
+		$sql = "INSERT INTO Ordini (quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore) VALUES ('".$quantitaRichiesta."', '".$row['codice']."', '".$row['descrizione']."', '".$prezzo."', '".$row['codiceFornitore']."')";
 		$result = mysqli_query($conn, $sql);
-
-		if(mysqli_fetch_assoc($result)>0)
-		{
-			echo "Riga generata<br><br>";
-		}
-		else
-		{
-			echo "Generazione fallita<br><br>";
-		}
 	}
-	
 	
 	if(mysqli_fetch_assoc($result)>0)
 	{
