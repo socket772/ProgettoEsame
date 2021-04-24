@@ -2,9 +2,6 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 	
-	$username = $_POST["usr"];
-	$password = $_POST["psw"];
-	
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection

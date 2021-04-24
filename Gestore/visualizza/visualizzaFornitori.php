@@ -2,9 +2,6 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 	
-	$username = $_POST["usr"];
-	$password = $_POST["psw"];
-	
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection
@@ -13,10 +10,9 @@
 	  die("Connection failed: " . mysqli_connect_error());
 	}
 	
-	$sql = "SELECT * FROM Fornitore";
+	$sql = "SELECT * FROM Fornitori";
 	
 	$result = mysqli_query($conn, $sql);
-	
 	
 
 	if (mysqli_num_rows($result) > 0)
