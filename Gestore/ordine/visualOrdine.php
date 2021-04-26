@@ -15,10 +15,14 @@
 	$sql = "SELECT * FROM Ordini";
 	$result = mysqli_query($conn, $sql);
 
-	echo mysqli_num_rows($result);
+	if(mysqli_num_rows($result)==0)
+	{
+		echo "Tabella vuota";
+		exit();
+	}
 
     echo "<form action='./uptOrdine.php'><table class='blueTable'>";
-	echo "<th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo Totale</th> <th>Codice fornitore</th> <th>Data</th>";
+	echo "<tr><th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo Totale</th> <th>Codice fornitore</th> <th>Data</th></tr>";
 
 	$conta = 0;
 

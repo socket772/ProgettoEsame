@@ -20,7 +20,7 @@
 	{
 	  // output data of each row
 	  //$row["dato"]
-	  echo "<pre><table class='blueTable'>";
+	  echo "<table class='blueTable'>";
 	  echo "<tr>";
 	  echo "<th>Codice</th> <th>Descrizione</th> <th>Pezzi per unita</th> <th>Scorta</th> <th>Scorta minima</th> <th>Tipo</th> <th>Prezzo unitario</th> <th>Ordine</th> <th>Consumo Annuo</th> <th>Codice fornitore</th>";
 	  echo "</tr>";
@@ -39,7 +39,7 @@
 		echo "<td>".$row["codiceFornitore"]."</td>";
 		echo "</tr>";
 	  }
-	  echo "</table></pre>";
+	  echo "</table>";
 	}
 	
 	else
