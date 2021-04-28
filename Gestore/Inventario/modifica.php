@@ -77,7 +77,7 @@
 		echo "</tr>";
 
 
-		$sqlFornitore = "SELECT codice FROM Fornitore";
+		$sqlFornitore = "SELECT codice FROM Fornitori";
 		$resultFornitore = mysqli_query($conn, $sqlFornitore);
 		echo "<tr>";
 		echo "<td><label for='codiceFornitore'>Codice fornitore prodotto: </label></td>";

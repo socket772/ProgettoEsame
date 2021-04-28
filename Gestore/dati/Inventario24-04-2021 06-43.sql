@@ -1,22 +1,3 @@
-#
-# TABLE STRUCTURE FOR: Inventario
-#
-
-DROP TABLE IF EXISTS `Inventario`;
-
-CREATE TABLE `Inventario` (
-  `codice` varchar(22) NOT NULL,
-  `descrizione` text DEFAULT 'itemDesc',
-  `pezziPerUnita` int(3) DEFAULT 0,
-  `scorta` int(3) DEFAULT 0,
-  `scortaMinima` int(3) DEFAULT 0,
-  `tipo` char(1) DEFAULT '9',
-  `prezzoUnitario` decimal(8,2) DEFAULT 0.00,
-  `ordine` int(3) DEFAULT 0,
-  `consumoAnnuo` int(3) DEFAULT 0,
-  `codiceFornitore` varchar(16) DEFAULT 'CODE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 INSERT INTO `Inventario` (`codice`, `descrizione`, `pezziPerUnita`, `scorta`, `scortaMinima`, `tipo`, `prezzoUnitario`, `ordine`, `consumoAnnuo`, `codiceFornitore`) VALUES ('rrke', 'hevb', 54, 31, 45, 'j', '52.00', 57, 552133, 'ankz');
 INSERT INTO `Inventario` (`codice`, `descrizione`, `pezziPerUnita`, `scorta`, `scortaMinima`, `tipo`, `prezzoUnitario`, `ordine`, `consumoAnnuo`, `codiceFornitore`) VALUES ('ywvv', 'arib', 72, 17, 47, 'x', '86.00', 21, 332, 'dlcx');
 INSERT INTO `Inventario` (`codice`, `descrizione`, `pezziPerUnita`, `scorta`, `scortaMinima`, `tipo`, `prezzoUnitario`, `ordine`, `consumoAnnuo`, `codiceFornitore`) VALUES ('earr', 'pfyb', 66, 71, 94, 'i', '63.00', 4, 9925051, 'eibu');

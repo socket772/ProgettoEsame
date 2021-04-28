@@ -28,6 +28,6 @@
 
 	mysqli_close($conn);
 ?>
-		<button onclick='window.location.href="../visualizza/visualizzaFornitori.php";'>Visualizza inventario</button>
+		<button onclick='window.location.href="../visualizza/visualizzaFornitori.php";'>Visualizza fornitori</button>
 	</body>
 </html>

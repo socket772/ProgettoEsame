@@ -1,19 +1,3 @@
-#
-# TABLE STRUCTURE FOR: Fornitore
-#
-
-DROP TABLE IF EXISTS `Fornitore`;
-
-CREATE TABLE `Fornitore` (
-  `codice` varchar(16) NOT NULL,
-  `nome` varchar(32) DEFAULT 'fornitore_name',
-  `mail` varchar(64) DEFAULT 'fornitore_mail@domain',
-  `impegnoDiSpesa` decimal(8,2) DEFAULT 0.00,
-  `determina` int(4) DEFAULT 0,
-  `dataDetermina` date DEFAULT NULL,
-  `cig` varchar(32) DEFAULT 'fornitore_cig123'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 INSERT INTO `Fornitore` (`codice`, `nome`, `mail`, `impegnoDiSpesa`, `determina`, `dataDetermina`, `cig`) VALUES ('qbfc', 'qmsm', 'xrosenbaum@example.org', '1846.00', 58920370, '2008-10-03', 'lgld');
 INSERT INTO `Fornitore` (`codice`, `nome`, `mail`, `impegnoDiSpesa`, `determina`, `dataDetermina`, `cig`) VALUES ('htdl', 'mixv', 'raul30@example.com', '0.00', 660, '1991-08-24', 'ktzr');
 INSERT INTO `Fornitore` (`codice`, `nome`, `mail`, `impegnoDiSpesa`, `determina`, `dataDetermina`, `cig`) VALUES ('qfss', 'ulmi', 'carmela.schaefer@example.org', '2254.70', 7, '1988-08-08', 'lnul');
