@@ -42,6 +42,9 @@
 	  echo "0 results";
 	}
 
+	if($_GET["option"]=="OK")
+		echo "<br /><button onclick='window.location.href='./confirmOrdine.php?option=OK';'>Conferma ordine</button>";
+
 	mysqli_close($conn);
 ?>
 </html>

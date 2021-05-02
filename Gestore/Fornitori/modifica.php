@@ -24,17 +24,16 @@
 
 	$sql = "SELECT * FROM Fornitori WHERE codice='".$code."'";
 	$result = mysqli_query($conn, $sql);
-	
-	if(mysqli_num_rows($result)==0)
-	{
-		echo "<h1>Il codice inserito non è valido (elemento mancante)</h1>";
-		exit();
-	}
 
 	$row = mysqli_fetch_assoc($result);
 		echo "<pre><table class='blueTable'><form action='./modificaExec.php'>";
 		echo "<th>Riga</th><th>Dati inseriti</th>";
 		echo "<input type='hidden' id='code' name='code' value='".$code."'>";
+
+		echo "<tr>";
+		echo "<td>Codice</td>";
+		echo "<td>".$row["codice"]."</td>";
+		echo "</tr>";
 
 		echo "<tr>";
 		echo "<td><label for='nome'>Nome fornitore: text (32)</label></td>";

@@ -27,6 +27,7 @@
 	  while($row = mysqli_fetch_assoc($result))
 	  {
 		echo "<tr>";
+		echo "<td>".$row["codice"]."</td>";
 		echo "<td>".$row["nomeUfficio"]."</td>";
 		echo "<td>".$row["codiceOggetto"]."</td>";
 		echo "<td>".$row["descrizioneOgetto"]."</td>";

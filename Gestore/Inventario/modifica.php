@@ -37,6 +37,11 @@
 		echo "<input type='hidden' id='code' name='code' value='".$code."'>";
 
 		echo "<tr>";
+		echo "<td>Codice</td>";
+		echo "<td>".$row["codice"]."</td>";
+		echo "</tr>";
+
+		echo "<tr>";
 		echo "<td><label for='descrizione'>Descrizione prodotto: text</label></td>";
 		echo "<td><textarea  cols='50' rows='2' name='descrizione'>".$row['descrizione']."</textarea></td>";
 		echo "</tr>";
