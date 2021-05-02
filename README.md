@@ -35,4 +35,4 @@ Progetto per l'esame di stato
 
 -[ ]modifica richieste
 
--[ ]~~cookies~~ biscuits per login :warning: username e password ancora nel php :warning:
+-[ ]~~cookies~~ biscuits per login :warning:username e password ancora nel php:warning:
