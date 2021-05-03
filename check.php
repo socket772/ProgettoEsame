@@ -20,7 +20,7 @@
 		foreach ($specChars as $k => $v)
 		{
 			
-			$t = str_replace($k, $v, strtolower($t));
+			$t = str_ireplace($k, $v, $t);
 		}
 	
 		return $t;
