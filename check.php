@@ -6,8 +6,31 @@
 //	$usr = $_POST['username'];
 //	$psw = $_POST['password'];
 	
-    $usr = $_GET['username'];
-    $psw = $_GET['password'];
+    
+
+	function remove_injections($string)
+	{
+		$t = $string;
+		$specChars = array(
+			' ' => '-','!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '','+' => '',
+			',' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '',
+			'\\' => '', '_' => '', '`' => '', '|' => '', '/' => '', '/_' => '',
+			'and' => '', 'or' => '', 'drop' => '', 'truncate' => '');
+	
+		foreach ($specChars as $k => $v)
+		{
+			
+			$t = str_replace($k, $v, strtolower($t));
+		}
+	
+		return $t;
+	}
+
+	$usr = remove_injections($_GET['username']);
+    $psw = remove_injections($_GET['password']);
+
+	echo $usr."<br>";
+	echo $psw."<br>";
 
 	$psw = md5(md5($psw));
 
@@ -24,7 +47,7 @@
 
 	$row = mysqli_fetch_assoc($result);
 
-	if($row['username']==$usr && $row['password']==$psw)
+/*	if($row['username']==$usr && $row['password']==$psw)
 	{
         echo "Login effettuato";
 		setcookie("usernameInventarioLocale", $usr, time()+(14*24*60*60), "/","", 0);
@@ -43,5 +66,5 @@
         echo "login fallito";
     }
 
-	
+*/	
 ?>

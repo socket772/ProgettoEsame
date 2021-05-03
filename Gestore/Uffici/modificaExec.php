@@ -12,7 +12,25 @@
 	}
 	
 	
-	$code= $_GET['code'];
+	function remove_injections($string)
+	{
+		$t = $string;
+		$specChars = array(
+			' ' => '-','!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '','+' => '',
+			',' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '',
+			'\\' => '', '_' => '', '`' => '', '|' => '', '/' => '', '/_' => '',
+			'and' => '', 'or' => '', 'drop' => '', 'truncate' => '');
+	
+		foreach ($specChars as $k => $v)
+		{
+			
+			$t = str_replace($k, $v, strtolower($t));
+		}
+	
+		return $t;
+	}
+
+	$code= remove_injections($_GET['code']);
 	
 		$sql = "INSERT INTO Inventario(codice) VALUES('".$code."')";
 		$result = mysqli_query($conn, $sql);

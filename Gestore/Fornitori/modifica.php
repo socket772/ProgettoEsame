@@ -1,7 +1,6 @@
 <html>
 <style><?php include '../stili/style.css'; ?></style>
 <?php
-
 	
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
@@ -11,9 +10,27 @@
 	  die("Connection failed: " . mysqli_connect_error());
 	}
 	
+	function remove_injections($string)
+	{
+		$t = $string;
+		$specChars = array(
+			' ' => '-','!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '','+' => '',
+			',' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '',
+			'\\' => '', '_' => '', '`' => '', '|' => '', '/' => '', '/_' => '',
+			'AND' => '', 'OR' => '', 'DROP' => '', 'TRUNCATE' => '');
 	
-	$code= $_GET['code'];
-	$option= $_GET['option'];
+		foreach ($specChars as $k => $v)
+		{
+			$t = str_replace($k, $v, $t);
+		}
+	
+		return $t;
+	}
+
+	$code= remove_injections($_GET['code']);
+	$option= remove_injections($_GET['option']);
+
+	
 
 	if($option == "add")
 	{

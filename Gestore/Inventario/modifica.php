@@ -12,8 +12,26 @@
 	}
 	
 	
-	$code= $_GET['code'];
-	$option= $_GET['option'];
+	function remove_injections($string)
+	{
+		$t = $string;
+		$specChars = array(
+			' ' => '-','!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '','+' => '',
+			',' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '',
+			'\\' => '', '_' => '', '`' => '', '|' => '', '/' => '', '/_' => '',
+			'and' => '', 'or' => '', 'drop' => '', 'truncate' => '');
+	
+		foreach ($specChars as $k => $v)
+		{
+			
+			$t = str_replace($k, $v, strtolower($t));
+		}
+	
+		return $t;
+	}
+
+	$code= remove_injections($_GET['code']);
+	$option= remove_injections($_GET['option']);
 
 	if($option == "add")
 	{
