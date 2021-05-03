@@ -1,38 +1,65 @@
-# ProgettoEsame
+# Progetto per l'esame do stato
 Progetto per l'esame di stato
 
-**_Funzioni_**
+## Italiano
 
--[x]agguingi oggetto
+*:heavy_check_mark:Gestione inventario
+    *:heavy_check_mark:Aggiungi oggetto
+    *:heavy_check_mark:Visualizza oggetto
+    *:heavy_check_mark:Modifica oggetto
 
--[x]visualizza oggetto
+*:heavy_check_mark:Fornitori
+    *:heavy_check_mark:Aggiungi fornitore
+    *:heavy_check_mark:Visualizza fornitore
+    *:heavy_check_mark:Modifica fornitore
 
--[x]modifica oggetto
+*:heavy_minus_sign:Fornitori
+    *:heavy_check_mark:genera ordine
+    *:heavy_check_mark:Visualizza ordine
+    *:heavy_check_mark:Modifica ordine
+    *:x:storico ordini
 
--[x]agguingi fornitore
+*:heavy_check_mark:Uffici
+    *:heavy_check_mark:Aggiungi uffici
+    *:heavy_check_mark:Visualizza uffici
+    *:x:Modifica uffici
 
--[x]visualizza fornitore
+*:x:Richieste
+    *:x:Aggiungi richieste
+    *:x:Visualizza richieste
+    *:x:Modifica richieste
 
--[x]modifica fornitore
+*:x:~~cookies~~ biscuits per il login :warning:username e password ancora nel php:warning:
 
--[x]genera ordine
 
--[x]visualizza ordine
+# Project for my final exam
 
--[x]modifica ordine
+## English
 
--[ ]storico ordini
+*:heavy_check_mark:Inventory manager
+    *:heavy_check_mark:Add item
+    *:heavy_check_mark:Show item
+    *:heavy_check_mark:Modify item
 
--[x]agguingi uffici
+*:heavy_check_mark:Fornitori
+    *:heavy_check_mark:Add fornitore
+    *:heavy_check_mark:Show fornitore
+    *:heavy_check_mark:Modify fornitore
 
--[x]visualizza uffici
+*:heavy_minus_sign:Oreders manager
+    *:heavy_check_mark:genera order
+    *:heavy_check_mark:Show order
+    *:heavy_check_mark:Modify order
+    *:x:storico ordini
 
--[x]~~modifica uffici~~ non si può fare
+*:heavy_check_mark:Office manager
+    *:heavy_check_mark:Add office
+    *:heavy_check_mark:Show office
+    *:x:Modify office
 
--[ ]agguingi richieste
+*:x:Requests manager
+    *:x:Add request
+    *:x:Show request
+    *:x:Modify request
 
--[ ]visualizza richieste
-
--[ ]modifica richieste
-
--[ ]~~cookies~~ biscuits per login :warning:username e password ancora nel php:warning:
+*:x:~~cookies~~ biscuits for the login function :warning:username e password still in the php file:warning:
