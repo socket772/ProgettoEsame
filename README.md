@@ -41,10 +41,10 @@
     * :heavy_check_mark:Show item
     * :heavy_check_mark:Modify item
 
-* :heavy_check_mark:Fornitori
-    * :heavy_check_mark:Add fornitore
-    * :heavy_check_mark:Show fornitore
-    * :heavy_check_mark:Modify fornitore
+* :heavy_check_mark:Suppliers
+    * :heavy_check_mark:Add supplier
+    * :heavy_check_mark:Show supplier
+    * :heavy_check_mark:Modify supplier
 
 * :heavy_minus_sign:Oreders manager
     * :heavy_check_mark:genera order
