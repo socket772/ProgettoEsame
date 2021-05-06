@@ -2,18 +2,19 @@
 <body>
 <style><?php include '../stili/style.css'; ?></style>
 <?php
-	
 
-	$code = $_GET["code"];
-	$descrizione = $_GET["descrizione"];
-	$pezziPerUnita = $_GET["pezziPerUnita"];
-	$scorta = $_GET["scorta"];
-	$scortaMinima = $_GET["scortaMinima"];
-	$tipo = $_GET["tipo"];
-	$prezzoUnitario = $_GET["prezzoUnitario"];
-	$ordine = $_GET["ordine"];
-	$consumoAnnuo = $_GET["consumoAnnuo"];
-	$codiceFornitore = $_GET["codiceFornitore"];
+	include '../libs.php';
+
+	$code = remove_injections($_GET["code"]);
+	$descrizione = remove_injections($_GET["descrizione"]);
+	$pezziPerUnita = remove_injections($_GET["pezziPerUnita"]);
+	$scorta = remove_injections($_GET["scorta"]);
+	$scortaMinima = remove_injections($_GET["scortaMinima"]);
+	$tipo = remove_injections($_GET["tipo"]);
+	$prezzoUnitario = remove_injections($_GET["prezzoUnitario"]);
+	$ordine = remove_injections($_GET["ordine"]);
+	$consumoAnnuo = remove_injections($_GET["consumoAnnuo"]);
+	$codiceFornitore = remove_injections($_GET["codiceFornitore"]);
 	
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");

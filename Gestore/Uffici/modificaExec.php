@@ -2,7 +2,7 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 
-	
+	include '../libs.php';
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection
@@ -10,25 +10,7 @@
 	{
 	  die("Connection failed: " . mysqli_connect_error());
 	}
-	
-	
-	function remove_injections($string)
-	{
-		$t = $string;
-		$specChars = array(
-			' ' => '-','!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '','+' => '',
-			',' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '',
-			'\\' => '', '_' => '', '`' => '', '|' => '', '/' => '', '/_' => '',
-			'and' => '', 'or' => '', 'drop' => '', 'truncate' => '');
-	
-		foreach ($specChars as $k => $v)
-		{
-			
-			$t = str_replace($k, $v, strtolower($t));
-		}
-	
-		return $t;
-	}
+
 
 	$code= remove_injections($_GET['code']);
 	

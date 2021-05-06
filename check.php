@@ -2,30 +2,11 @@
 	//admin
 	//c3284d0f94606de1fd2af172aba15bf3
 
-	header("Location: ./Gestore");
+//	header("Location: ./Gestore");
 //	$usr = $_POST['username'];
 //	$psw = $_POST['password'];
 	
-    
-
-	function remove_injections($string)
-	{
-		$t = $string;
-		$specChars = array(
-			' ' => '-','!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '','+' => '',
-			',' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '',
-			'\\' => '', '_' => '', '`' => '', '|' => '', '/' => '', '/_' => '',
-			'and' => '', 'or' => '', 'drop' => '', 'truncate' => '');
-	
-		foreach ($specChars as $k => $v)
-		{
-			
-			$t = str_ireplace($k, $v, $t);
-		}
-	
-		return $t;
-	}
-
+	include './Gestore/libs.php';
 	$usr = remove_injections($_GET['username']);
     $psw = remove_injections($_GET['password']);
 

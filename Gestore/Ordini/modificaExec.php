@@ -3,9 +3,9 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 	
-
-	$code = $_GET["code"];
-	$quantita = $_GET["quantita"];
+	include '../libs.php';
+	$code = remove_injections($_GET["code"]);
+	$quantita = remove_injections($_GET["quantita"]);
 	
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
@@ -19,8 +19,6 @@
 	$resultPrezzo = mysqli_query($conn, $sqlPrezzo);
 	$row = mysqli_fetch_assoc($resultPrezzo);
 	$prezzoTot = $quantita*$row["prezzoUnitario"]; // Ricalcolo prezzo totale
-
-
 
 
 	$sqlFinal = "UPDATE Ordini SET quantita='".$quantita."', prezzoTot='".$prezzoTot."' WHERE codiceOggetto='".$code."'"; //Query di aggiornamento

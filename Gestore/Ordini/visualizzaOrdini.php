@@ -2,6 +2,7 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 	
+	include '../libs.php';
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection
@@ -39,12 +40,10 @@
 	
 	else
 	{
-	  echo "0 results";
+	  echo "Tabella vuota<br>";
 	}
-
-	if($_GET["option"]=="OK")
-		echo "<br /><button onclick='window.location.href='./confirmOrdine.php?option=OK';'>Conferma ordine</button>";
-
+	if(mysqli_affected_rows($conn)>0)
+		echo "<br /><button onclick='window.location.href=\"./index.php\";'>Conferma ordine</button>";
 	mysqli_close($conn);
 ?>
 </html>

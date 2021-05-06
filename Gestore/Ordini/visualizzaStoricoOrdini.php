@@ -11,7 +11,7 @@
 	  die("Connection failed: " . mysqli_connect_error());
 	}
 	
-	$sql = "SELECT * FROM Uffici";
+	$sql = "SELECT * FROM StoricoOrdini";
 	
 	$result = mysqli_query($conn, $sql);
 	
@@ -23,12 +23,17 @@
 	  //$row["dato"]
 	  echo "<table class='blueTable'>";
 	  echo "<tr>";
-	  echo "<th>Nome Ufficio</th>";
+	  echo "<th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo totale</th> <th>Codice fornitore</th> <th>Data ordine</th>";
 	  echo "</tr>";
 	  while($row = mysqli_fetch_assoc($result))
 	  {
 		echo "<tr>";
-		echo "<td>".$row["nome"]."</td>";
+		echo "<td>".$row["quantita"]."</td>";
+		echo "<td>".$row["codiceOggetto"]."</td>";
+		echo "<td>".$row["descrizione"]."</td>";
+		echo "<td>".$row["prezzoTot"]."</td>";
+		echo "<td>".$row["codiceFornitore"]."</td>";
+		echo "<td>".$row["data"]."</td>";
 		echo "</tr>";
 	  }
 	  echo "</table>";
@@ -36,9 +41,10 @@
 	
 	else
 	{
-	  echo "0 results";
+	  echo "Tabella vuota";
 	}
 
+	echo "<br /><button onclick='window.location.href=\"./index.php\";'>Ritorna al menu ordini</button>";
 	mysqli_close($conn);
 ?>
 </html>

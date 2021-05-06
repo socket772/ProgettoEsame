@@ -2,32 +2,13 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 
-	
+	include '../libs.php';
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection
 	if (!$conn)
 	{
 	  die("Connection failed: " . mysqli_connect_error());
-	}
-	
-	
-	function remove_injections($string)
-	{
-		$t = $string;
-		$specChars = array(
-			' ' => '-','!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '','+' => '',
-			',' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '',
-			'\\' => '', '_' => '', '`' => '', '|' => '', '/' => '', '/_' => '',
-			'and' => '', 'or' => '', 'drop' => '', 'truncate' => '');
-	
-		foreach ($specChars as $k => $v)
-		{
-			
-			$t = str_ireplace($k, $v, $t);
-		}
-	
-		return $t;
 	}
 
 	$code= remove_injections($_GET['code']);
@@ -50,7 +31,7 @@
 	}
 
 	$row = mysqli_fetch_assoc($result);
-		echo "<pre><table class='blueTable'><form action='./modificaExec.php'>";
+		echo "<table class='blueTable'><form action='./modificaExec.php'>";
 		echo "<th>Riga</th><th>Dati inseriti</th>";
 		echo "<input type='hidden' id='code' name='code' value='".$code."'>";
 
@@ -118,7 +99,7 @@
 		echo "<input type='submit' class='alto'>";
 		echo"<br><br>";
 		echo "<input type='reset' class='alto'>";
-		echo "</form></pre>";
+		echo "</form>";
 
 	mysqli_close($conn);
 ?>

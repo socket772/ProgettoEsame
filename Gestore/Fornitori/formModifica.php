@@ -9,11 +9,12 @@ if (!$conn)
 ?>
 
 <html>
+<?php include './Gestore/libs.php'; ?>
 	<body>
 		<h1>Inserisci il codice del fornitore da modificare</h1>
-		
 		<form action="./modifica.php" method="GET">
 			<label for="code">Codice fornitore: </label>
+		
 			<?php
 				$sqlFornitore = "SELECT codice FROM Fornitori ORDER BY codice";
 				$resultFornitore = mysqli_query($conn, $sqlFornitore);
@@ -21,11 +22,14 @@ if (!$conn)
 				while($tmp = mysqli_fetch_assoc($resultFornitore))
 				{
 					echo "<option value='".$tmp["codice"]."'>".$tmp["codice"]."</options>";
+					
 				}
+				echo "</select>";
 				mysqli_close($conn);
 			?>
-			<input type="submit">
-			<input type="reset">
+			<br><br>
+			echo "<input type='submit'>";
+			echo "<input type='reset'>";
 		</form>
 	</body>
 </html>

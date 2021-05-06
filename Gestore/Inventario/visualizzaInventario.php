@@ -2,6 +2,7 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 	
+	include '../libs.php';
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection
@@ -44,7 +45,7 @@
 	
 	else
 	{
-	  echo "0 results";
+	  echo "La tabella e vuota";
 	}
 
 	mysqli_close($conn);

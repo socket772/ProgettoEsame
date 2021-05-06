@@ -22,6 +22,7 @@ if (!$conn)
 				{
 					echo "<option value='".$tmp["codice"]."'>".$tmp["codice"]."</options>";
 				}
+				echo "</select>";
 				mysqli_close($conn);
 			?>
 			<input type="submit">

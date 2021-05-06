@@ -10,7 +10,7 @@ if (!$conn)
 
 <html>
 	<body>
-		<h1>Inserisci il codice del fornitore da modificare</h1>
+		<h1>Inserisci il codice dell'oggetto da modificare</h1>
 		
 		<form action="./modifica.php" method="GET">
 			<label for="code">Codice fornitore: </label>
@@ -22,8 +22,10 @@ if (!$conn)
 				{
 					echo "<option value='".$tmp["codice"]."'>".$tmp["codice"]."</options>";
 				}
+				echo "</select>";
 				mysqli_close($conn);
 			?>
+			<br><br>
 			<input type="submit">
 			<input type="reset">
 		</form>

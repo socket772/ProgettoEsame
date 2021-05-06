@@ -1,7 +1,7 @@
 <html>
-<style><?php include '../stili/style.css'; ?></style>
 <?php
 	
+	include '../libs.php';
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection

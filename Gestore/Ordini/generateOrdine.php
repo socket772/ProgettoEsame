@@ -3,7 +3,7 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 	
-
+	include '../libs.php';
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
 	// Check connection
@@ -29,9 +29,9 @@
 		$result = mysqli_query($conn, $sql);
 	}
 	
-	if(mysqli_fetch_assoc($result)>0)
+	if(mysqli_affected_rows($conn)>0)
 	{
-		echo "Tabella generata<br><br>";
+		header("Location: ./visualizzaOrdini.php");
 	}
 	else
 	{
@@ -43,6 +43,6 @@
 	mysqli_close($conn);
 ?>
 		
-		<button onclick='window.location.href="./visualizzaOrdini.php";'>Visualizza inventario</button>
+		<button onclick='window.location.href="./index.php";'>Menu ordini</button>
 	</body>
 </html>

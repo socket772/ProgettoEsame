@@ -3,14 +3,15 @@
 <style><?php include '../stili/style.css'; ?></style>
 <?php
 	
+	include '../libs.php';
 
-	$code = $_GET["code"];
-	$nome = $_GET["nome"];
-	$mail = $_GET["mail"];
-	$impegnoDiSpesa = $_GET["impegnoDiSpesa"];
-	$determina = $_GET["determina"];
-	$dataDetermina = $_GET["dataDetermina"];
-	$cig = $_GET["cig"];
+	$code = remove_injections($_GET["code"]);
+	$nome = remove_injections($_GET["nome"]);
+	$mail = remove_injections($_GET["mail"]);
+	$impegnoDiSpesa = remove_injections($_GET["impegnoDiSpesa"]);
+	$determina = remove_injections($_GET["determina"]);
+	$dataDetermina = remove_injections($_GET["dataDetermina"]);
+	$cig = remove_injections($_GET["cig"]);
 	
 	// Create connection
 	$conn = mysqli_connect("localhost", "root", "", "Inventario");
