@@ -1,6 +1,6 @@
 <html>
 <body>
-<style><?php include '../stili/style.css'; ?></style>
+<style><?php include 'Gestore/stili/css/bootstrap-italia.min.css'; ?></style>
 <?php
 	
 	include '../libs.php';

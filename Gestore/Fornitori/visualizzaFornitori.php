@@ -1,4 +1,5 @@
 <html>
+<style><?php include '../stili/css/bootstrap-italia.min.css'; ?></style>
 <?php
 	
 	include '../libs.php';
@@ -19,9 +20,9 @@
 	{
 	  // output data of each row
 	  //$row["dato"]
-	  echo "<pre><table class='blueTable'>";
+	  echo "<pre><table class='table'>";
 	  echo "<tr>";
-	  echo "<th>Codice</th> <th>Nome</th> <th>eMail</th> <th>Impegno di spesa</th> <th>Determina</th> <th>Data determina</th> <th>CIG</th>";
+	  echo "<th scope='col'>Codice</th> <th scope='col'>Nome</th> <th scope='col'>eMail</th> <th scope='col'>Impegno di spesa</th> <th scope='col'>Determina</th> <th scope='col'>Data determina</th> <th scope='col'>CIG</th>";
 	  echo "</tr>";
 	  while($row = mysqli_fetch_assoc($result))
 	  {

@@ -2,7 +2,7 @@
 	//admin
 	//c3284d0f94606de1fd2af172aba15bf3
 
-//	header("Location: ./Gestore");
+	header("Location: ./Gestore");
 //	$usr = $_POST['username'];
 //	$psw = $_POST['password'];
 	
