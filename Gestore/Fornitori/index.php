@@ -1,11 +1,15 @@
 <html>
+<style><?php include '../stili/css/bootstrap-italia.min.css'; ?></style>
+
     <body>
-        <h1>Menu gestione fornitori</h1>
+        <h1 class="display-1">Menu gestione fornitori</h1>
         <br><br>
-        <button onclick="window.location.href='./formAggiungi.php';">Aggiungi fornitori</button>
+        <button class="btn btn-outline-primary" onclick="window.location.href='./formAggiungi.php';">Aggiungi fornitori</button>
         <br><br>
-        <button onclick="window.location.href='./formModifica.php';">Modifica fornitori</button>
+        <button class="btn btn-outline-primary" onclick="window.location.href='./formModifica.php';">Modifica fornitori</button>
         <br><br>
-        <button onclick="window.location.href='./visualizzaFornitori.php';">Visualizza fornitori</button>
+        <button class="btn btn-outline-primary" onclick="window.location.href='./visualizzaFornitori.php';">Visualizza fornitori</button>
+        <script src="../stili/js/bootstrap-italia.bundle.min.js"></script>
     </body>
+    
 </html>
