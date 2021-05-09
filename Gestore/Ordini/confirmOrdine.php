@@ -36,7 +36,6 @@
 			echo "Inserimento di ".$codiceOggetto." fallito<br>";
 		}
 		
-
 		//Aggionamento inventario
 		$sqlUpdate = "UPDATE Inventario SET ordine='".$quantita."' WHERE codice='".$codiceOggetto."'";
 		$resultUpdate= mysqli_query($conn, $sqlUpdate);
@@ -57,6 +56,6 @@
 
 	mysqli_close($conn);
 ?>
-		<button onclick='window.location.href="./visualizzaOrdini.php";'>Visualizza ordini</button>
+		<button onclick='window.location.href="./index.php";'>Visualizza ordini</button>
 	</body>
 </html>

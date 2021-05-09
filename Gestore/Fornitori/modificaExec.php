@@ -6,13 +6,13 @@
 		
 		include '../libs.php';
 
-		$code = remove_injections($_GET["code"]);
-		$nome = remove_injections($_GET["nome"]);
-		$mail = remove_injections($_GET["mail"]);
-		$impegnoDiSpesa = remove_injections($_GET["impegnoDiSpesa"]);
-		$determina = remove_injections($_GET["determina"]);
-		$dataDetermina = remove_injections($_GET["dataDetermina"]);
-		$cig = remove_injections($_GET["cig"]);
+		$code = remove_injections($_POST["code"]);
+		$nome = remove_injections($_POST["nome"]);
+		$mail = remove_injections($_POST["mail"]);
+		$impegnoDiSpesa = remove_injections($_POST["impegnoDiSpesa"]);
+		$determina = remove_injections($_POST["determina"]);
+		$dataDetermina = remove_injections($_POST["dataDetermina"]);
+		$cig = remove_injections($_POST["cig"]);
 		
 		// Create connection
 		$conn = mysqli_connect("localhost", "root", "", "Inventario");
@@ -30,7 +30,7 @@
 
 		mysqli_close($conn);
 	?>
-		<button class="btn btn-outline-primary" onclick='window.location.href="./visualizzaFornitori.php";'>Visualizza fornitori</button>
+		<button class="btn btn-primary" onclick='window.location.href="./visualizzaFornitori.php";'>Visualizza fornitori</button>
 		<script src="../stili/js/bootstrap-italia.bundle.min.js"></script>
 	</body>
 	

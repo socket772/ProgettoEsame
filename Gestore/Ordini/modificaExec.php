@@ -1,6 +1,6 @@
 <html>
 <body>
-<style><?php include '../stili/style.css'; ?></style>
+<style><?php include '../stili/css/bootstrap-italia.min.css'; ?></style>
 <?php
 	
 	include '../libs.php';
@@ -24,10 +24,11 @@
 	$sqlFinal = "UPDATE Ordini SET quantita='".$quantita."', prezzoTot='".$prezzoTot."' WHERE codiceOggetto='".$code."'"; //Query di aggiornamento
 	$resultFinal = mysqli_query($conn, $sqlFinal);
 	
-	echo "Dati aggiornati<br><br>";
+	echo "Tabella aggiornata<br><br>";
 
 	mysqli_close($conn);
 ?>
-		<button onclick='window.location.href="./visualizzaOrdini.php";'>Visualizza ordini</button>
+		<button class="btn btn-primary" onclick='window.location.href="./visualizzaOrdini.php";'>Visualizza ordini</button>
+		<script src="../stili/js/bootstrap-italia.bundle.min.js"></script>
 	</body>
 </html>

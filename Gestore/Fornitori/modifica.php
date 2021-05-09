@@ -27,8 +27,8 @@
 	$result = mysqli_query($conn, $sql);
 
 	$row = mysqli_fetch_assoc($result);
-		echo "<table class='table'><form action='./modificaExec.php'>";
-		echo "<th scope='col'>Riga</th><th scope='col'>Dati inseriti</th>";
+		echo "<table class='table'><form action='./modificaExec.php' method='POST'>";
+		echo "<th>Riga</th><th>Dati inseriti</th>";
 		echo "<input type='hidden' id='code' name='code' value='".$code."'>";
 
 		echo "<tr>";
