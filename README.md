@@ -1,10 +1,11 @@
 # Italiano
 
-## Progetto per l'esame do stato
+## Progetto per l'esame di stato
 
 * :heavy_check_mark:Gestione inventario
     * :heavy_check_mark:Aggiungi oggetto
-    * :heavy_check_mark:Visualizza oggetto
+    * :heavy_minus_sign:Visualizza oggetto
+      * :x:Ricerca per fornitore
     * :heavy_check_mark:Modifica oggetto
 
 * :heavy_check_mark:Fornitori
@@ -12,23 +13,25 @@
     * :heavy_check_mark:Visualizza fornitore
     * :heavy_check_mark:Modifica fornitore
 
-* :heavy_minus_sign:Fornitori
+* :heavy_minus_sign:Ordini
     * :heavy_check_mark:genera ordine
     * :heavy_check_mark:Visualizza ordine
     * :heavy_check_mark:Modifica ordine
-    * :x:storico ordini
+    * :heavy_minus_sign:Conferma ordine
+      * :x:Scala impegno di spesa
+    * :heavy_check_mark:storico ordini
 
-* :heavy_check_mark:Uffici
+* :heavy_minus_sign:Uffici
     * :heavy_check_mark:Aggiungi uffici
     * :heavy_check_mark:Visualizza uffici
     * :x:Modifica uffici
 
-* :x:Richieste
+ * :x:Richieste
     * :x:Aggiungi richieste
     * :x:Visualizza richieste
     * :x:Modifica richieste
 
-* :x:~~cookies~~ biscuits per il login :warning:username e password ancora nel php:warning:
+* :x:cookies per il login :warning:username e password ancora nel php:warning:
 
 ----
 
@@ -52,14 +55,14 @@
     * :heavy_check_mark:Modify order
     * :x:storico ordini
 
-* :heavy_check_mark:Office manager
+* :heavy_minus_sign:Office manager
     * :heavy_check_mark:Add office
     * :heavy_check_mark:Show office
-    * :x:Modify office
+    * :x:Modify office~~
 
 * :x:Requests manager
     * :x:Add request
     * :x:Show request
     * :x:Modify request
-
-* :x:~~cookies~~ biscuits for the login function :warning:username and password still in the php file:warning:
+ 
+* :x:cookies for the login function :warning:username and password still in the php file:warning:
