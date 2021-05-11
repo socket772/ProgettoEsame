@@ -1,48 +1,79 @@
 <html>
+<style><?php include '../stili/css/bootstrap-italia.min.css'; ?></style>
 	<body>
-<style><?php include '../stili/style.css'; ?></style>
-<?php
-	
-	include '../libs.php';
-	// Create connection
-	$conn = mysqli_connect("localhost", "root", "", "Inventario");
-	// Check connection
-	if (!$conn)
-	{
-	  die("Connection failed: " . mysqli_connect_error());
-	}
+		<div class="it-header-slim-wrapper">
+            <div class="container">
+                <div class="row">
+                <div class="col-12">
+                    <div class="it-header-slim-wrapper-content">
+                    <a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+                    <div class="nav-mobile">
+                        <nav>
+                        <a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
+                            <span>Menu principale</span>
+                            <svg class="icon">
+                            <use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                            </svg>
+                        </a>
+                        <div class="link-list-wrapper collapse" id="menu1">
+                            <ul class="link-list">
+                            <li><a class="list-item" href="#"></a></li>
+                            <li><a class="list-item active" href="../Inventario">Inventario</a></li>
+                            <li><a class="list-item active" href="../Fornitori">Fornitori</a></li>
+                            <li><a class="list-item active" href="../Ordini">Ordini</a></li>
+                            <li><a class="list-item" href="#"></a></li>
+                            </ul>
+                        </div>
+                        </nav>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+		<?php
+			
+			include '../libs.php';
+			// Create connection
+			$conn = mysqli_connect("localhost", "root", "", "Inventario");
+			// Check connection
+			if (!$conn)
+			{
+			die("Connection failed: " . mysqli_connect_error());
+			}
 
-	$sqlTruncate = "TRUNCATE TABLE Ordini";
-	$resultTruncate = mysqli_query($conn, $sqlTruncate);
+			$sqlTruncate = "TRUNCATE TABLE Ordini";
+			$resultTruncate = mysqli_query($conn, $sqlTruncate);
 
-	$sqlInventario = "SELECT * FROM Inventario WHERE (scorta+ordine)<scortaMinima";
-	$resultInventario = mysqli_query($conn, $sqlInventario);
-	
-//	$sqlOrdine = "SELECT codiceOggetto FROM Ordini";
-//	$resultOrdine = mysqli_query($conn, $sqlOrdine);
-	
-	while($row = mysqli_fetch_assoc($resultInventario))
-	{
-		$quantitaRichiesta = $row['scortaMinima']-$row['scorta']+$row['ordine']+0;
-		$prezzo = $quantitaRichiesta*$row['prezzoUnitario'];
-		$sql = "INSERT INTO Ordini (quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore) VALUES ('".$quantitaRichiesta."', '".$row['codice']."', '".$row['descrizione']."', '".$prezzo."', '".$row['codiceFornitore']."')";
-		$result = mysqli_query($conn, $sql);
-	}
-	
-	if(mysqli_affected_rows($conn)>0)
-	{
-		header("Location: ./visualizzaOrdini.php");
-	}
-	else
-	{
-		echo "Generazione fallita<br><br>";
-	}
-	
+			$sqlInventario = "SELECT * FROM Inventario WHERE (scorta+ordine)<scortaMinima";
+			$resultInventario = mysqli_query($conn, $sqlInventario);
+			
+		//	$sqlOrdine = "SELECT codiceOggetto FROM Ordini";
+		//	$resultOrdine = mysqli_query($conn, $sqlOrdine);
+			
+			while($row = mysqli_fetch_assoc($resultInventario))
+			{
+				$quantitaRichiesta = $row['scortaMinima']-$row['scorta']+$row['ordine']+0;
+				$prezzo = $quantitaRichiesta*$row['prezzoUnitario'];
+				$sql = "INSERT INTO Ordini (quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore) VALUES ('".$quantitaRichiesta."', '".$row['codice']."', '".$row['descrizione']."', '".$prezzo."', '".$row['codiceFornitore']."')";
+				$result = mysqli_query($conn, $sql);
+			}
+			
+			if(mysqli_affected_rows($conn)>0)
+			{
+				echo "<br><button class=\"btn btn-primary\" onclick='window.location.href=\"./visualizzaOrdini.php\";'>Visualizza ordini</button>";
+			}
+			else
+			{
+				echo "Nessun oggetto e' a livello critico<br><br>";
+			}
+			
 
 
-	mysqli_close($conn);
-?>
-		
-		<button onclick='window.location.href="./index.php";'>Menu ordini</button>
+			mysqli_close($conn);
+		?>
+		<br><br>
+		<button class="btn btn-primary" onclick='window.location.href="./index.php";'>Menu ordini</button>
+		<script src="../stili/js/bootstrap-italia.bundle.min.js"></script>
 	</body>
 </html>
