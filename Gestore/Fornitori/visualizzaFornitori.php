@@ -48,7 +48,7 @@
 			
 			$sql = "SELECT * FROM Fornitori";
 			
-			$result = mysqli_query($conn, $sql);
+			$result = mysqli_query($conn, $sql); // esecuzione query
 			
 
 			if (mysqli_num_rows($result) > 0)
@@ -59,7 +59,7 @@
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Codice</th> <th>Nome</th> <th>eMail</th> <th>Impegno di spesa</th> <th>Determina</th> <th>Data determina</th> <th>CIG</th></thead>";
 			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result))
+			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["codice"]."</td>";

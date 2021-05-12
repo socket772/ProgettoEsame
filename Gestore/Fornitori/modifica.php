@@ -47,17 +47,17 @@
 			$option= remove_injections($_GET['option']);
 			
 
-			if($option == "add")
+			if($option == "add") //opzione di aggiunta fornitore
 			{
 				$sql = "INSERT INTO Fornitori(codice) VALUES('".$code."')";
 				$result = mysqli_query($conn, $sql);
 			}
 
 
-			$sql = "SELECT * FROM Fornitori WHERE codice='".$code."'";
+			$sql = "SELECT * FROM Fornitori WHERE codice='".$code."'"; //recupero dati fornitore
 			$result = mysqli_query($conn, $sql);
 
-			$row = mysqli_fetch_assoc($result);
+			$row = mysqli_fetch_assoc($result); // generazione form per la modifica dei dati
 				echo "<table class='table'><form action='./modificaExec.php' method='POST'>";
 				echo "<thead class='thead-dark'><th>Riga</th><th>Dati inseriti</th></thead>";
 				echo "<input type='hidden' id='code' name='code' value='".$code."'>";
@@ -101,7 +101,7 @@
 				echo "</tr></table>";
 
 				echo"<br>";
-				echo "<input type='submit' class='btn btn-outline-secondary'><br><br>";
+				echo "<input type='submit' class='btn btn-outline-secondary'><br><br>"; // passaggio alla prossima fase
 				echo "<input type='reset' class='btn btn-outline-secondary'><br><br>";
 				echo "</form>";
 

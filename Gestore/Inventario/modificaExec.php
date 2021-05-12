@@ -35,6 +35,7 @@
 
 			include '../libs.php';
 
+            //recupero dati
 			$code = remove_injections($_POST["code"]);
 			$descrizione = remove_injections($_POST["descrizione"]);
 			$pezziPerUnita = remove_injections($_POST["pezziPerUnita"]);
@@ -56,9 +57,9 @@
 			
 			$sql = "UPDATE Inventario SET descrizione='".$descrizione."', pezziPerUnita='".$pezziPerUnita."', scorta='".$scorta."', scortaMinima='".$scortaMinima."', tipo='".$tipo."', prezzoUnitario='".$prezzoUnitario."', ordine='".$ordine."', consumoAnnuo='".$consumoAnnuo."', codiceFornitore='".$codiceFornitore."' WHERE codice='".$code."'";
 			
-			$result = mysqli_query($conn, $sql);
+			$result = mysqli_query($conn, $sql); //esecuzione update
 		
-			echo "Tabella aggiornata<br><br>";
+			echo "Dati aggiornati correttamente<br><br>";
 
 			mysqli_close($conn);
 			?>

@@ -34,6 +34,7 @@
 		<?php
 			
 			include '../libs.php';
+            //recupero dati
 			$code = remove_injections($_GET["code"]);
 			$quantita = remove_injections($_GET["quantita"]);
 			

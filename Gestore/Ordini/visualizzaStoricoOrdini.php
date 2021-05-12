@@ -56,7 +56,7 @@
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Numero ordine</th> <th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo totale</th> <th>Codice fornitore</th> <th>Data ordine</th></thead>";
 			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result))
+			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["numOrdine"]."</td>";

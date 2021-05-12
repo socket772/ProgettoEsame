@@ -56,7 +56,7 @@
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo totale</th> <th>Codice fornitore</th></thead>";
 			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result))
+			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["quantita"]."</td>";
@@ -74,7 +74,7 @@
 			echo "Tabella vuota<br>";
 			}
 			if(mysqli_affected_rows($conn)>0)
-				echo "<br /><button class='btn btn-primary' onclick='window.location.href=\"./confirmOrdine.php\";'>Conferma ordine</button>";
+				echo "<br /><button class='btn btn-primary' onclick='window.location.href=\"./confirmOrdine.php\";'>Conferma ordine</button>"; // passaggio alla fase di conferma dell'ordine
 			mysqli_close($conn);
 		?>
 		<a href="./index.php"><svg class="icon icon-sm icon-primary mr-2"><use xlink:href="../stili/svg/sprite.svg#it-arrow-left"></use></svg> Torna indietro</a>

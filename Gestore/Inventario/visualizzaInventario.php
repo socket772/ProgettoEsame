@@ -44,7 +44,7 @@
 			
 			$sql = "SELECT * FROM Inventario";
 			
-			$result = mysqli_query($conn, $sql);
+			$result = mysqli_query($conn, $sql); // esecuzione query
 			
 			
 
@@ -56,7 +56,7 @@
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Codice</th> <th>Descrizione</th> <th>Pezzi per unita</th> <th>Scorta</th> <th>Scorta minima</th> <th>Tipo</th> <th>Prezzo unitario</th> <th>Ordine</th> <th>Consumo Annuo</th> <th>Codice fornitore</th></thead>";
 			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result))
+			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["codice"]."</td>";

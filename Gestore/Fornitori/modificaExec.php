@@ -36,6 +36,7 @@
 		
 		include '../libs.php';
 
+		//recupero dati
 		$code = remove_injections($_POST["code"]);
 		$nome = remove_injections($_POST["nome"]);
 		$mail = remove_injections($_POST["mail"]);
@@ -54,7 +55,7 @@
 		
 		$sql = "UPDATE Fornitori SET nome='".$nome."', mail='".$mail."', impegnoDiSpesa='".$impegnoDiSpesa."', determina='".$determina."', dataDetermina='".$dataDetermina."', cig='".$cig."' WHERE codice='".$code."'";
 		
-		$result = mysqli_query($conn, $sql);
+		$result = mysqli_query($conn, $sql); //esecuzione update
 		
 		echo "Dati aggiornati correttamente<br><br>";
 
