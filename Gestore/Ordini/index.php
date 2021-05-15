@@ -32,7 +32,7 @@
             </div>
         </div>
         
-        <h1>Genera l'ordine</h1>
+        <h1 class="display-1">Genera l'ordine</h1>
         <br><br>
         <button class="btn btn-primary" onclick="window.location.href='./formAggiungi.php';">Aggiungi ordine</button>
         <br><br>

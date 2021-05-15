@@ -35,12 +35,7 @@
 			
 			include '../libs.php';
 			// Create connection
-			$conn = mysqli_connect("localhost", "root", "", "Inventario");
-			// Check connection
-			if (!$conn)
-			{
-			die("Connection failed: " . mysqli_connect_error());
-			}
+			$conn = mysqli_database();
 
 			$sqlTruncate = "TRUNCATE TABLE Ordini";
 			$resultTruncate = mysqli_query($conn, $sqlTruncate);

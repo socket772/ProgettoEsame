@@ -35,28 +35,22 @@
 			
 			include '../libs.php';
 			// Create connection
-			$conn = mysqli_connect("localhost", "root", "", "Inventario");
-			// Check connection
-			if (!$conn)
-			{
-			die("Connection failed: " . mysqli_connect_error());
-			}
-			
-			$sql = "SELECT * FROM Inventario";
-			
-			$result = mysqli_query($conn, $sql); // esecuzione query
-			
+			$conn = mysqli_database();
 			
 
-			if (mysqli_num_rows($result) > 0)
+			//recupero dati query
+			$result = select_star("Inventario");
+			if ($result !=null)
 			{
-			// output data of each row
-			//$row["dato"]
+				echo "<h3>La tabella è vuota<h3>";
+			}
+
+
 			echo "<table class='table'>";
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Codice</th> <th>Descrizione</th> <th>Pezzi per unita</th> <th>Scorta</th> <th>Scorta minima</th> <th>Tipo</th> <th>Prezzo unitario</th> <th>Ordine</th> <th>Consumo Annuo</th> <th>Codice fornitore</th></thead>";
 			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
+			while($row = $result) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["codice"]."</td>";
@@ -72,12 +66,6 @@
 				echo "</tr>";
 			}
 			echo "</table>";
-			}
-			
-			else
-			{
-			echo "La tabella e vuota";
-			}
 
 			mysqli_close($conn);
 		?>

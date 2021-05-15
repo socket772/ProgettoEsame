@@ -38,28 +38,22 @@
 		<?php
 			
 			include '../libs.php';
+			
 			// Create connection
-			$conn = mysqli_connect("localhost", "root", "", "Inventario");
-			// Check connection
-			if (!$conn)
+			$conn = mysqli_database();
+			
+			//recupero dati query
+			$result = select_star("Fornitori");
+			if ($result !=null)
 			{
-			die("Connection failed: " . mysqli_connect_error());
+				echo "<h3>La tabella è vuota<h3>";
 			}
 			
-			$sql = "SELECT * FROM Fornitori";
-			
-			$result = mysqli_query($conn, $sql); // esecuzione query
-			
-
-			if (mysqli_num_rows($result) > 0)
-			{
-			// output data of each row
-			//$row["dato"]
 			echo "<table class='table'>";
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Codice</th> <th>Nome</th> <th>eMail</th> <th>Impegno di spesa</th> <th>Determina</th> <th>Data determina</th> <th>CIG</th></thead>";
 			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
+			while($row = $result) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["codice"]."</td>";
@@ -72,12 +66,6 @@
 				echo "</tr>";
 			}
 			echo "</table>";
-			}
-			
-			else
-			{
-			echo "0 results";
-			}
 
 			mysqli_close($conn);
 		?>

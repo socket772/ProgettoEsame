@@ -35,28 +35,26 @@
 			
 			include '../libs.php';
 			// Create connection
-			$conn = mysqli_connect("localhost", "root", "", "Inventario");
-			// Check connection
-			if (!$conn)
-			{
-			die("Connection failed: " . mysqli_connect_error());
-			}
+			$conn = mysqli_database();
 			
 			$sql = "SELECT * FROM Ordini";
-			
 			$result = mysqli_query($conn, $sql);
 			
 			
 
-			if (mysqli_num_rows($result) > 0)
+			//recupero dati query
+			$result = select_star("Fornitori");
+			if ($result !=null)
 			{
-			// output data of each row
-			//$row["dato"]
+				echo "<h3>La tabella è vuota<h3>";
+			}
+
+
 			echo "<table class='table'>";
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo totale</th> <th>Codice fornitore</th></thead>";
 			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
+			while($row = $result) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["quantita"]."</td>";
@@ -67,12 +65,8 @@
 				echo "</tr>";
 			}
 			echo "</table>";
-			}
 			
-			else
-			{
-			echo "Tabella vuota<br>";
-			}
+
 			if(mysqli_affected_rows($conn)>0)
 				echo "<br /><button class='btn btn-primary' onclick='window.location.href=\"./confirmOrdine.php\";'>Conferma ordine</button>"; // passaggio alla fase di conferma dell'ordine
 			mysqli_close($conn);

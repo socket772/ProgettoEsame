@@ -1,15 +1,10 @@
 <?php
 // Create connection
-$conn = mysqli_connect("localhost", "root", "", "Inventario");
-// Check connection
-if (!$conn)
-{
-  die("Connection failed: " . mysqli_connect_error());
-}
+$conn = mysqli_database();
 ?>
 
 <html>
-	<?php include './Gestore/libs.php'; ?>
+	<?php include '../libs.php'; ?>
 	<style><?php include '../stili/css/bootstrap-italia.min.css'; ?></style>
 	
 	<body>
@@ -64,7 +59,7 @@ if (!$conn)
 				?>
 				</select>
 			</div>
-
+			<input type='hidden' id='option' name='option' value='upt'>
 			<br>
 			<input type='submit' class='btn btn-outline-secondary'>
 			<input type='reset' class='btn btn-outline-secondary'>

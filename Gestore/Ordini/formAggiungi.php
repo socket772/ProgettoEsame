@@ -32,7 +32,7 @@
             </div>
         </div>
 		
-		<h1>Inserisci il codice del prodotto da aggiungere</h1>
+		<h1 class="display-1">Inserisci il codice del prodotto da aggiungere</h1>
 		
 		<form action="./modifica.php" method="GET">
 			

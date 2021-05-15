@@ -36,6 +36,9 @@
 		
 		include '../libs.php';
 
+		// Create connection
+		$conn = mysqli_database();
+
 		//recupero dati
 		$code = remove_injections($_POST["code"]);
 		$nome = remove_injections($_POST["nome"]);
@@ -45,13 +48,6 @@
 		$dataDetermina = remove_injections($_POST["dataDetermina"]);
 		$cig = remove_injections($_POST["cig"]);
 		
-		// Create connection
-		$conn = mysqli_connect("localhost", "root", "", "Inventario");
-		// Check connection
-		if (!$conn)
-		{
-		die("Connection failed: " . mysqli_connect_error());
-		}
 		
 		$sql = "UPDATE Fornitori SET nome='".$nome."', mail='".$mail."', impegnoDiSpesa='".$impegnoDiSpesa."', determina='".$determina."', dataDetermina='".$dataDetermina."', cig='".$cig."' WHERE codice='".$code."'";
 		

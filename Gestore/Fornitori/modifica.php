@@ -35,29 +35,28 @@
 		<?php
 			
 			include '../libs.php';
-			// Create connection
-			$conn = mysqli_connect("localhost", "root", "", "Inventario");
-			// Check connection
-			if (!$conn)
-			{
-			die("Connection failed: " . mysqli_connect_error());
-			}
-
-			$code= remove_injections($_GET['code']);
-			$option= remove_injections($_GET['option']);
 			
+			// Create connection
+			$conn = mysqli_database();
 
-			if($option == "add") //opzione di aggiunta fornitore
+			//recupero codice
+			$code= remove_injections($_GET['code']);		
+
+			if($_GET['option'] == "add") //opzione di aggiunta fornitore
 			{
 				$sql = "INSERT INTO Fornitori(codice) VALUES('".$code."')";
 				$result = mysqli_query($conn, $sql);
 			}
 
 
-			$sql = "SELECT * FROM Fornitori WHERE codice='".$code."'"; //recupero dati fornitore
-			$result = mysqli_query($conn, $sql);
+			//recupero dati fornitore
+			$row = select_specific("Fornitori", $code); // generazione form per la modifica dei dati
+			if($row==null)
+			{
+				echo "<h1>Il codice inserito non è valido (elemento mancante)</h1>";
+				exit();
+			}
 
-			$row = mysqli_fetch_assoc($result); // generazione form per la modifica dei dati
 				echo "<table class='table'><form action='./modificaExec.php' method='POST'>";
 				echo "<thead class='thead-dark'><th>Riga</th><th>Dati inseriti</th></thead>";
 				echo "<input type='hidden' id='code' name='code' value='".$code."'>";

@@ -1,11 +1,6 @@
 <?php
 // Create connection
-$conn = mysqli_connect("localhost", "root", "", "Inventario");
-// Check connection
-if (!$conn)
-{
-  die("Connection failed: " . mysqli_connect_error());
-}
+$conn = mysqli_database();
 ?>
 
 <html>
@@ -43,7 +38,7 @@ if (!$conn)
                 </div>
             </div>
         </div>
-		<h1>Inserisci il codice dell'oggetto da modificare</h1>
+		<h1 class="display-1">Inserisci il codice dell'oggetto da modificare</h1>
 		<form action="./modifica.php" method="GET">
 			
 		<label for='code'>Codice oggetto</label>
@@ -64,6 +59,7 @@ if (!$conn)
 			</div>
 
 			<br>
+			<input type='hidden' id='option' name='option' value='upt'>
 			<input type='submit' class='btn btn-outline-secondary'>
 			<input type='reset' class='btn btn-outline-secondary'>
 		</form>

@@ -48,12 +48,7 @@
 			$codiceFornitore = remove_injections($_POST["codiceFornitore"]);
 			
 			// Create connection
-			$conn = mysqli_connect("localhost", "root", "", "Inventario");
-			// Check connection
-			if (!$conn)
-			{
-			die("Connection failed: " . mysqli_connect_error());
-			}
+			$conn = mysqli_database();
 			
 			$sql = "UPDATE Inventario SET descrizione='".$descrizione."', pezziPerUnita='".$pezziPerUnita."', scorta='".$scorta."', scortaMinima='".$scortaMinima."', tipo='".$tipo."', prezzoUnitario='".$prezzoUnitario."', ordine='".$ordine."', consumoAnnuo='".$consumoAnnuo."', codiceFornitore='".$codiceFornitore."' WHERE codice='".$code."'";
 			

@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <h1>Menu gestione inventario</h1>
+        <h1 class="display-1">Menu gestione inventario</h1>
         <br><br>
         <button class="btn btn-primary" onclick="window.location.href='./formAggiungi.php';">Aggiungi inventario</button>
         <br><br>
