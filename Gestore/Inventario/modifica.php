@@ -6,13 +6,13 @@
                 <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                    <a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+                    <a class="d-none d-lg-block navbar-brand" href="../"><img src="../stili/assets/stemma.png"> Menu Principale</a>
                     <div class="nav-mobile">
                         <nav>
                         <a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
                             <span>Menu principale</span>
                             <svg class="icon">
-                            <use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                            <use xlink:href="../stili/svg/sprite.svg#it-expand"></use>
                             </svg>
                         </a>
                         <div class="link-list-wrapper collapse" id="menu1">
@@ -39,25 +39,26 @@
 			
 			//recupero codice
 			$code= remove_injections($_GET['code']);
+			$option= remove_injections($_GET['option']);
 
 			if($_GET['option'] == "add") //aggiunta oggetto nell'inventario
 			{
 				$sql = "INSERT INTO Inventario(codice) VALUES('".$code."')";
 				$result = mysqli_query($conn, $sql);
+				echo $result;
 			}
 
 
-			//recupero dati inventario
+			$sql = "SELECT * FROM Inventario WHERE codice='".$code."'";
+			$result = mysqli_query($conn, $sql); //recupero dati inventario
 			
-
-			//recupero dati fornitore
-			$row = select_specific("Fornitori", $code); // generazione form per la modifica dei dati
-			if($row==null)
+			if(mysqli_num_rows($result)==0)
 			{
-				echo "<h1>Il codice inserito non è valido (elemento mancante)</h1>";
+				echo "<h2 class='display-2'>Il codice inserito non è valido (elemento mancante)</h2>";
 				exit();
 			}
 
+			$row = mysqli_fetch_assoc($result); // generazione form per la modifica dei dati
 				echo "<table class='table'><form action='./modificaExec.php' method='POST'>";
 				echo "<thead class='thead-dark'><th>Riga</th><th>Dati inseriti</th></thead>";
 				echo "<input type='hidden' id='code' name='code' value='".$code."'>";

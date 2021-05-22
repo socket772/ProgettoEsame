@@ -6,13 +6,13 @@
                 <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                    <a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+                    <a class="d-none d-lg-block navbar-brand" href="../"><img src="../stili/assets/stemma.png"> Menu Principale</a>
                     <div class="nav-mobile">
                         <nav>
                         <a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
                             <span>Menu principale</span>
                             <svg class="icon">
-                            <use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                            <use xlink:href="../stili/svg/sprite.svg#it-expand"></use>
                             </svg>
                         </a>
                         <div class="link-list-wrapper collapse" id="menu1">
@@ -34,9 +34,9 @@
 		<?php
 
 			include '../libs.php';
-
+            
             //recupero dati
-			$code = remove_injections($_POST["code"]);
+			$code = $_POST["code"];
 			$descrizione = remove_injections($_POST["descrizione"]);
 			$pezziPerUnita = remove_injections($_POST["pezziPerUnita"]);
 			$scorta = remove_injections($_POST["scorta"]);
@@ -45,19 +45,19 @@
 			$prezzoUnitario = remove_injections($_POST["prezzoUnitario"]);
 			$ordine = remove_injections($_POST["ordine"]);
 			$consumoAnnuo = remove_injections($_POST["consumoAnnuo"]);
-			$codiceFornitore = remove_injections($_POST["codiceFornitore"]);
+			$codiceFornitore = $_POST["codiceFornitore"];
 			
 			// Create connection
 			$conn = mysqli_database();
 			
 			$sql = "UPDATE Inventario SET descrizione='".$descrizione."', pezziPerUnita='".$pezziPerUnita."', scorta='".$scorta."', scortaMinima='".$scortaMinima."', tipo='".$tipo."', prezzoUnitario='".$prezzoUnitario."', ordine='".$ordine."', consumoAnnuo='".$consumoAnnuo."', codiceFornitore='".$codiceFornitore."' WHERE codice='".$code."'";
-			
-			$result = mysqli_query($conn, $sql); //esecuzione update
-		
-			echo "Dati aggiornati correttamente<br><br>";
 
+            if(mysqli_query($conn, $sql)) //esecuzione update
+			    echo "Dati aggiornati correttamente<br><br>";
+            else
+                echo "Aggiornamento fallito ". mysqli_error($conn) . "<br><br>";
 			mysqli_close($conn);
-			?>
+		?>
 			<button class="btn btn-primary" onclick='window.location.href="./visualizzaInventario.php";'>Visualizza inventario</button>
 			<script src="../stili/js/bootstrap-italia.bundle.min.js"></script>
 	</body>

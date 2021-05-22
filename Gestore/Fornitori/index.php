@@ -8,13 +8,13 @@
                 <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                    <a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+                    <a class="d-none d-lg-block navbar-brand" href="../"><img src="../stili/assets/stemma.png"> Menu Principale</a>
                     <div class="nav-mobile">
                         <nav>
                         <a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
                             <span>Menu principale</span>
                             <svg class="icon">
-                            <use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                            <use xlink:href="../stili/svg/sprite.svg#it-expand"></use>
                             </svg>
                         </a>
                         <div class="link-list-wrapper collapse" id="menu1">
@@ -34,13 +34,16 @@
             </div>
         </div>
 
-        <h1 class="display-1">Menu gestione fornitori</h1>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./formAggiungi.php';">Aggiungi fornitori</button>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./formModifica.php';">Modifica fornitori</button>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./visualizzaFornitori.php';">Visualizza fornitori</button>
+        <div class=" container col-11">
+            <h2 class="display-2">Menu gestione fornitori</h2>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./formAggiungi.php';">Aggiungi fornitori</button>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./formModifica.php';">Modifica fornitori</button>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./visualizzaFornitori.php';">Visualizza fornitori</button>
+        </div>
+
         <script src="../stili/js/bootstrap-italia.bundle.min.js"></script>
     </body>
     

@@ -6,13 +6,13 @@
                 <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                    <a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+                    <a class="d-none d-lg-block navbar-brand" href="../"><img src="../stili/assets/stemma.png"> Menu Principale</a>
                     <div class="nav-mobile">
                         <nav>
                         <a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
                             <span>Menu principale</span>
                             <svg class="icon">
-                            <use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                            <use xlink:href="../stili/svg/sprite.svg#it-expand"></use>
                             </svg>
                         </a>
                         <div class="link-list-wrapper collapse" id="menu1">
@@ -46,7 +46,7 @@
 			{
 			// output data of each row
 			//$row["dato"]
-			echo "<table class='table'>";
+			echo "<table class='table table-striped table-hover table-bordered'>";
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Numero ordine</th> <th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo totale</th> <th>Codice fornitore</th> <th>Data ordine</th></thead>";
 			echo "</tr>";

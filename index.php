@@ -9,18 +9,21 @@
 ?>
 
 <html>
+	<style><?php include './Gestore/stili/css/bootstrap-italia.min.css'; ?></style>
 	<body>
-		<form action="check.php" method="GET"> <!-Temporaneamente "GET"-!>
+		<h2 class="display-3">Login</h2>
+		<form action="check.php" method="POST"> <!-Temporaneamente "GET"-!>
 			<label for='username'>Username</label>
 			<input type='text'id='username'name='username' value=''>
 			<br><br>
 			<label for='password'>Password</label>
-			<input type='text'id='password'name='password' value=''>
+			<input type='password'id='password'name='password' value=''>
 			<br><br>
-			<input type='submit'>
-			<input type='reset'>
+			<input class="btn btn-outline-secondary" type='submit'>
+			<input class="btn btn-outline-secondary" type='reset'>
 		</form>
 		<br>
-		Oppure accedi alla <button onclick="window.open('./Gestore/readOnly.html')">Modalita lettura</button>
+		Oppure accedi alla <button class="btn btn-outline-primary" onclick="window.open('./Gestore/readOnly.php')">Modalita lettura</button>
+		<script src="./stili/js/bootstrap-italia.bundle.min.js"></script>
 	</body>
 </html>

@@ -6,13 +6,13 @@
                 <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                    <a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+                    <a class="d-none d-lg-block navbar-brand" href="../"><img src="../stili/assets/stemma.png"> Menu Principale</a>
                     <div class="nav-mobile">
                         <nav>
                         <a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
                             <span>Menu principale</span>
                             <svg class="icon">
-                            <use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                            <use xlink:href="../stili/svg/sprite.svg#it-expand"></use>
                             </svg>
                         </a>
                         <div class="link-list-wrapper collapse" id="menu1">
@@ -40,21 +40,15 @@
 			$sql = "SELECT * FROM Ordini";
 			$result = mysqli_query($conn, $sql);
 			
-			
-
-			//recupero dati query
-			$result = select_star("Fornitori");
-			if ($result !=null)
+			if (mysqli_num_rows($result) > 0)
 			{
-				echo "<h3>La tabella è vuota<h3>";
-			}
-
-
-			echo "<table class='table'>";
+			// output data of each row
+			//$row["dato"]
+			echo "<table class='table table-striped table-hover table-bordered'>";
 			echo "<tr>";
 			echo "<thead class='thead-dark'><th>Quantita</th> <th>Codice oggetto</th> <th>Descrizione</th> <th>Prezzo totale</th> <th>Codice fornitore</th></thead>";
 			echo "</tr>";
-			while($row = $result) //output dati nel DB
+			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
 			{
 				echo "<tr>";
 				echo "<td>".$row["quantita"]."</td>";
@@ -65,8 +59,12 @@
 				echo "</tr>";
 			}
 			echo "</table>";
+			}
 			
-
+			else
+			{
+				echo "<h3>La tabella e vuota<h3>";
+			}
 			if(mysqli_affected_rows($conn)>0)
 				echo "<br /><button class='btn btn-primary' onclick='window.location.href=\"./confirmOrdine.php\";'>Conferma ordine</button>"; // passaggio alla fase di conferma dell'ordine
 			mysqli_close($conn);

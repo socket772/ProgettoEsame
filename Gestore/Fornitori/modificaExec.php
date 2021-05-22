@@ -7,13 +7,13 @@
 					<div class="row">
 					<div class="col-12">
 						<div class="it-header-slim-wrapper-content">
-						<a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+						<a class="d-none d-lg-block navbar-brand" href="../"><img src="../stili/assets/stemma.png"> Menu Principale</a>
 						<div class="nav-mobile">
 							<nav>
 							<a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
 								<span>Menu principale</span>
 								<svg class="icon">
-								<use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+								<use xlink:href="../stili/svg/sprite.svg#it-expand"></use>
 								</svg>
 							</a>
 							<div class="link-list-wrapper collapse" id="menu1">
@@ -36,9 +36,9 @@
 		
 		include '../libs.php';
 
-		// Create connection
-		$conn = mysqli_database();
-
+		//Createconnection
+		$conn=mysqli_database();
+		
 		//recupero dati
 		$code = remove_injections($_POST["code"]);
 		$nome = remove_injections($_POST["nome"]);
@@ -51,9 +51,10 @@
 		
 		$sql = "UPDATE Fornitori SET nome='".$nome."', mail='".$mail."', impegnoDiSpesa='".$impegnoDiSpesa."', determina='".$determina."', dataDetermina='".$dataDetermina."', cig='".$cig."' WHERE codice='".$code."'";
 		
-		$result = mysqli_query($conn, $sql); //esecuzione update
-		
-		echo "Dati aggiornati correttamente<br><br>";
+		if(mysqli_query($conn, $sql)) //esecuzione update
+			    echo "Dati aggiornati correttamente<br><br>";
+            else
+                echo "Aggiornamento fallito ". mysqli_error($conn) . "<br><br>";
 
 		mysqli_close($conn);
 		?>

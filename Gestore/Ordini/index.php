@@ -6,13 +6,13 @@
                 <div class="row">
                 <div class="col-12">
                     <div class="it-header-slim-wrapper-content">
-                    <a class="d-none d-lg-block navbar-brand" href="../">Menu Principale</a>
+                    <a class="d-none d-lg-block navbar-brand" href="../"><img src="../stili/assets/stemma.png"> Menu Principale</a>
                     <div class="nav-mobile">
                         <nav>
                         <a class="it-opener d-lg-none" data-toggle="collapse" href="../" role="button" aria-expanded="false" aria-controls="menu1">
                             <span>Menu principale</span>
                             <svg class="icon">
-                            <use xlink:href="/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+                            <use xlink:href="../stili/svg/sprite.svg#it-expand"></use>
                             </svg>
                         </a>
                         <div class="link-list-wrapper collapse" id="menu1">
@@ -31,19 +31,20 @@
                 </div>
             </div>
         </div>
-        
-        <h1 class="display-1">Genera l'ordine</h1>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./formAggiungi.php';">Aggiungi ordine</button>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./formModifica.php';">Modifica ordine</button>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./visualizzaOrdini.php';">Visualizza l'ordine</button>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./generateOrdine.php';">Rigenera ordine (cancellera la tabella pre esistente)</button>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./visualizzaOrdini.php?option=OK&';">Conferma l'ordine</button>
-        <br><br>
-        <button class="btn btn-primary" onclick="window.location.href='./visualizzaStoricoOrdini.php?option=OK&';">Visualizza storico ordini</button>
+        <div class=" container col-11">
+            <h2 class="display-2">Genera l'ordine</h2>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./formAggiungi.php';">Aggiungi ordine</button>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./formModifica.php';">Modifica ordine</button>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./visualizzaOrdini.php';">Visualizza l'ordine</button>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./generateOrdine.php';">Rigenera ordine (cancellera la tabella pre esistente)</button>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./visualizzaOrdini.php?option=OK&';">Conferma l'ordine</button>
+            <br>
+            <button class="btn btn-primary btn-block" onclick="window.location.href='./visualizzaStoricoOrdini.php?option=OK&';">Visualizza storico ordini</button>
+        </div>
     </body>
 </html>
