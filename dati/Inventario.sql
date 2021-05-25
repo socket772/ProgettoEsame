@@ -47,7 +47,7 @@ CREATE TABLE `Fornitori` (
 
 CREATE TABLE `Inventario` (
   `codice` varchar(22) NOT NULL,
-  `descrizione` text DEFAULT 'itemDesc',
+  `descrizione` text,
   `pezziPerUnita` int(3) DEFAULT 0,
   `scorta` int(3) DEFAULT 0,
   `scortaMinima` int(3) DEFAULT 0,
@@ -67,7 +67,7 @@ CREATE TABLE `Inventario` (
 CREATE TABLE `Ordini` (
   `quantita` int(4) DEFAULT 0,
   `codiceOggetto` varchar(22) NOT NULL,
-  `descrizione` text DEFAULT NULL,
+  `descrizione` text,
   `prezzoTot` decimal(8,2) DEFAULT 0.00,
   `codiceFornitore` varchar(16) NOT NULL,
   `data` date DEFAULT NULL
@@ -82,7 +82,7 @@ CREATE TABLE `Ordini` (
 CREATE TABLE `Richieste` (
   `nomeUfficio` varchar(22) NOT NULL,
   `codiceOggetto` varchar(22) NOT NULL,
-  `descrizioneOggetto` text DEFAULT NULL,
+  `descrizioneOggetto` text,
   `data` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -95,7 +95,7 @@ CREATE TABLE `Richieste` (
 CREATE TABLE `StoricoOrdini` (
   `quantita` int(4) DEFAULT 0,
   `codiceOggetto` varchar(22) NOT NULL,
-  `descrizione` text DEFAULT NULL,
+  `descrizione` text,
   `prezzoTot` decimal(8,2) DEFAULT 0.00,
   `codiceFornitore` varchar(16) NOT NULL,
   `data` date DEFAULT NULL
