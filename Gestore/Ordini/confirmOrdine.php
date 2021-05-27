@@ -42,14 +42,12 @@
 			{
 				$quantita = $row["quantita"];
 				$codiceOggetto = $row["codiceOggetto"];
-				$desc = $row["descrizione"];
 				$prezzoTot = $row["prezzoTot"];
-				$codiceFornitore = $row["codiceFornitore"];
 				$data = date("Y/m/d");
 				
 
 				//Inserimento nello storico
-				$sqlMove = "INSERT INTO StoricoOrdini(quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore, data) VALUES ('".$quantita."', '".$codiceOggetto."', '".$desc."', '".$prezzoTot."', '".$codiceFornitore."', '".$data."')"; //Query di inserimento
+				$sqlMove = "INSERT INTO StoricoOrdini(quantita, codiceOggetto, prezzoTot, data) VALUES ('".$quantita."', '".$codiceOggetto."', '".$prezzoTot."', '".$data."')"; //Query di inserimento
 				$resultMove = mysqli_query($conn, $sqlMove);
 				if(mysqli_affected_rows($conn)>0)
 				{
@@ -80,6 +78,6 @@
 
 			mysqli_close($conn);
 		?>
-		<button onclick='window.location.href="./index.php";'>Visualizza ordini</button>
+        <button class="btn btn-primary" onclick="window.location.href='./visualizzaStoricoOrdini.php';">Visualizza lo storico ordini</button>
 	</body>
 </html>

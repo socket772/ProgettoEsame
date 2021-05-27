@@ -38,26 +38,24 @@
             // Create connection
 			$conn = mysqli_database();
 
+            
+
             //recupero dati
-			$code = remove_injections($_GET["code"]);
-			$quantita = remove_injections($_GET["quantita"]);
-			
-			
+			$code = remove_injections($_POST["code"]);
+			$quantita = remove_injections($_POST["quantita"]);
 
 			$sqlPrezzo = "SELECT * FROM Inventario WHERE codice='".$code."'"; //Richiesta del prezzo unitario per aggiornare quello totale
 			$resultPrezzo = mysqli_query($conn, $sqlPrezzo);
 			$row = mysqli_fetch_assoc($resultPrezzo);
 			$prezzoTot = $quantita*$row["prezzoUnitario"]; // Ricalcolo prezzo totale
 
-
 			$sqlFinal = "UPDATE Ordini SET quantita='".$quantita."', prezzoTot='".$prezzoTot."' WHERE codiceOggetto='".$code."'"; //Query di aggiornamento
-			$resultFinal = mysqli_query($conn, $sqlFinal);
-			
-			if(mysqli_query($conn, $sql)) //esecuzione update
+            
+
+			if(mysqli_query($conn, $sqlFinal))
 			    echo "Dati aggiornati correttamente<br><br>";
             else
                 echo "Aggiornamento fallito ". mysqli_error($conn) . "<br><br>";
-			mysqli_close($conn);
 
 			mysqli_close($conn);
 		?>

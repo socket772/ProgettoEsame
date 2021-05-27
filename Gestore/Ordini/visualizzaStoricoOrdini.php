@@ -37,12 +37,11 @@
 			// Create connection
 			$conn = mysqli_database();
 			
-			$sql = "SELECT * FROM StoricoOrdini ORDER BY numOrdine DESC";
+			$sql = "SELECT id, quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore, data FROM StoricoOrdini, Inventario WHERE codiceOggetto=codice ORDER BY id DESC";
 			$result = mysqli_query($conn, $sql);
 			
-			
 
-			if (mysqli_num_rows($result) > 0)
+			if ($result != 0)
 			{
 			// output data of each row
 			//$row["dato"]
@@ -53,7 +52,7 @@
 			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
 			{
 				echo "<tr>";
-				echo "<td>".$row["numOrdine"]."</td>";
+				echo "<td>".$row["id"]."</td>";
 				echo "<td>".$row["quantita"]."</td>";
 				echo "<td>".$row["codiceOggetto"]."</td>";
 				echo "<td>".$row["descrizione"]."</td>";

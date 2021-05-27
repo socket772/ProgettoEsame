@@ -40,32 +40,31 @@
 
 		//recupero codice
 		$code= remove_injections($_GET['code']);
-		$option= remove_injections($_GET['option']);
+		$option= $_GET['option'];
 
 		if($option == "add") //aggiunta oggetto nell'inventario
 		{
-			$sqlSearch = "SELECT * FROM Inventario WHERE codice='".$code."'";
-			$resultSearch = mysqli_query($conn, $sqlSearch);
-			$row = mysqli_fetch_assoc($resultSearch);
-			$prezzoTot = $quantita*$row["prezzoUnitario"];
 
-			$sqlInsert = "INSERT INTO Ordini(codiceOggetto, descrizione, prezzoTot, codiceFornitore) VALUES('".$code."', '".$row["descrizione"]."', '".$prezzoTot."', '".$row["codiceFornitore"]."')";
+			$sqlInventario = "SELECT * FROM Inventario WHERE codice='".$code."'";
+			$resultInventario = mysqli_query($conn, $sqlInventario);
+
+			$row = mysqli_fetch_assoc($resultInventario);
+
+			$sqlInsert = "INSERT INTO Ordini(quantita, codiceOggetto, prezzoTot) VALUES( '0', '".$code."', '0')";
 			$resultInsert = mysqli_query($conn, $sqlInsert);
 		}
 
-
 		//recupero dati fornitore
-		$sql = "SELECT * FROM Inventario WHERE codice='" .$code. "'";
+		$sql = "SELECT quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore FROM Ordini, Inventario WHERE codiceOggetto=codice AND codice='" .$code. "'";
 		$result = mysqli_query($conn, $sql);
 		
 		if(mysqli_num_rows($result)==0)
 		{
 			echo "<h1>Il codice inserito non è valido (elemento mancante)</h1>";
-			exit();
 		}
 
 		$row = mysqli_fetch_assoc($result); // generazione form per la modifica dei dati
-			echo "<table class='table'><form action='./modificaExec.php'>";
+			echo "<table class='table'><form action='./modificaExec.php' method='POST'>";
 			echo "<thead class='thead-dark'><th >Riga</th><th >Dati inseriti</th></thead>";
 			echo "<input type='hidden' id='code' name='code' value='".$code."'>";
 

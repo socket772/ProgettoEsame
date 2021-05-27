@@ -10,14 +10,14 @@
 	$sqlInventario = "SELECT * FROM Inventario WHERE (scorta+ordine)<scortaMinima";
 	$resultInventario = mysqli_query($conn, $sqlInventario);
 	
-//	$sqlOrdine = "SELECT codiceOggetto FROM Ordini";
+//	$sqlOrdine = "SELECT codiceOggetto FROM Ordini"; UPDATE Inventario SET ordine=0;
 //	$resultOrdine = mysqli_query($conn, $sqlOrdine);
 	
 	while($row = mysqli_fetch_assoc($resultInventario))
 	{
 		$quantitaRichiesta = $row['scortaMinima']-$row['scorta']+$row['ordine']+0;
 		$prezzo = $quantitaRichiesta*$row['prezzoUnitario'];
-		$sql = "INSERT INTO Ordini (quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore) VALUES ('".$quantitaRichiesta."', '".$row['codice']."', '".$row['descrizione']."', '".$prezzo."', '".$row['codiceFornitore']."')";
+		$sql = "INSERT INTO Ordini (quantita, codiceOggetto, prezzoTot) VALUES ('".$quantitaRichiesta."', '".$row['codice']."', '".$prezzo."')";
 		$result = mysqli_query($conn, $sql);
 	}
 	

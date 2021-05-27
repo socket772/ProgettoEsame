@@ -18,7 +18,7 @@ function remove_injections(String $string)
 
 function mysqli_database()
 {
-	$conn = mysqli_connect("localhost", "root", "", "Inventario");
+	$conn = new mysqli("localhost", "root", "", "Inventario");
 	
 	if (!$conn)
 	{

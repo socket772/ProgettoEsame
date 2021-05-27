@@ -1,25 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Creato il: Apr 28, 2021 alle 15:39
--- Versione del server: 10.4.17-MariaDB
--- Versione PHP: 8.0.0
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `Inventario`
---
 CREATE DATABASE IF NOT EXISTS `Inventario` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `Inventario`;
 
@@ -29,15 +7,17 @@ USE `Inventario`;
 -- Struttura della tabella `Fornitori`
 --
 
-CREATE TABLE `Fornitori` (
+DROP TABLE IF EXISTS `Fornitori`;
+CREATE TABLE IF NOT EXISTS `Fornitori` (
   `codice` varchar(16) NOT NULL,
   `nome` varchar(32) DEFAULT 'fornitore_name',
   `mail` varchar(64) DEFAULT 'fornitore_mail@domain',
   `impegnoDiSpesa` decimal(8,2) DEFAULT 0.00,
   `determina` int(4) DEFAULT 0,
   `dataDetermina` date DEFAULT NULL,
-  `cig` varchar(32) DEFAULT 'fornitore_cig123'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `cig` varchar(32) DEFAULT 'fornitore_cig123',
+  PRIMARY KEY (`codice`)
+);
 
 -- --------------------------------------------------------
 
@@ -45,9 +25,10 @@ CREATE TABLE `Fornitori` (
 -- Struttura della tabella `Inventario`
 --
 
-CREATE TABLE `Inventario` (
+DROP TABLE IF EXISTS `Inventario`;
+CREATE TABLE IF NOT EXISTS `Inventario` (
   `codice` varchar(22) NOT NULL,
-  `descrizione` text,
+  `descrizione` text DEFAULT 'itemDesc',
   `pezziPerUnita` int(3) DEFAULT 0,
   `scorta` int(3) DEFAULT 0,
   `scortaMinima` int(3) DEFAULT 0,
@@ -55,8 +36,10 @@ CREATE TABLE `Inventario` (
   `prezzoUnitario` decimal(8,2) DEFAULT 0.00,
   `ordine` int(3) DEFAULT 0,
   `consumoAnnuo` int(3) DEFAULT 0,
-  `codiceFornitore` varchar(16) DEFAULT 'CODE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `codiceFornitore` varchar(16) DEFAULT 'CODE',
+  PRIMARY KEY (`codice`),
+  KEY `codiceFornitore` (`codiceFornitore`)
+);
 
 -- --------------------------------------------------------
 
@@ -64,14 +47,16 @@ CREATE TABLE `Inventario` (
 -- Struttura della tabella `Ordini`
 --
 
-CREATE TABLE `Ordini` (
+DROP TABLE IF EXISTS `Ordini`;
+CREATE TABLE IF NOT EXISTS `Ordini` (
   `quantita` int(4) DEFAULT 0,
   `codiceOggetto` varchar(22) NOT NULL,
-  `descrizione` text,
+  `descrizione` text DEFAULT NULL,
   `prezzoTot` decimal(8,2) DEFAULT 0.00,
   `codiceFornitore` varchar(16) NOT NULL,
-  `data` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`codiceOggetto`),
+  KEY `codiceFornitore` (`codiceFornitore`) USING BTREE
+);
 
 -- --------------------------------------------------------
 
@@ -79,12 +64,15 @@ CREATE TABLE `Ordini` (
 -- Struttura della tabella `Richieste`
 --
 
-CREATE TABLE `Richieste` (
+DROP TABLE IF EXISTS `Richieste`;
+CREATE TABLE IF NOT EXISTS `Richieste` (
   `nomeUfficio` varchar(22) NOT NULL,
   `codiceOggetto` varchar(22) NOT NULL,
-  `descrizioneOggetto` text,
-  `data` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `descrizioneOggetto` text DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  PRIMARY KEY (`nomeUfficio`,`codiceOggetto`),
+  KEY `codiceOggetto` (`codiceOggetto`)
+);
 
 -- --------------------------------------------------------
 
@@ -92,14 +80,18 @@ CREATE TABLE `Richieste` (
 -- Struttura della tabella `StoricoOrdini`
 --
 
-CREATE TABLE `StoricoOrdini` (
+DROP TABLE IF EXISTS `StoricoOrdini`;
+CREATE TABLE IF NOT EXISTS `StoricoOrdini` (
+  `id` int(11) NOT NULL,
   `quantita` int(4) DEFAULT 0,
   `codiceOggetto` varchar(22) NOT NULL,
-  `descrizione` text,
+  `descrizione` text DEFAULT NULL,
   `prezzoTot` decimal(8,2) DEFAULT 0.00,
   `codiceFornitore` varchar(16) NOT NULL,
-  `data` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `data` date DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `codici` (`codiceFornitore`,`codiceOggetto`) USING BTREE
+);
 
 -- --------------------------------------------------------
 
@@ -107,9 +99,11 @@ CREATE TABLE `StoricoOrdini` (
 -- Struttura della tabella `Uffici`
 --
 
-CREATE TABLE `Uffici` (
-  `nome` varchar(22) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `Uffici`;
+CREATE TABLE IF NOT EXISTS `Uffici` (
+  `nome` varchar(22) NOT NULL,
+  PRIMARY KEY (`nome`)
+);
 
 -- --------------------------------------------------------
 
@@ -117,59 +111,12 @@ CREATE TABLE `Uffici` (
 -- Struttura della tabella `Utenti`
 --
 
-CREATE TABLE `Utenti` (
-  `username` varchar(8) NOT NULL,
-  `password` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indici per le tabelle scaricate
---
-
---
--- Indici per le tabelle `Fornitori`
---
-ALTER TABLE `Fornitori`
-  ADD PRIMARY KEY (`codice`);
-
---
--- Indici per le tabelle `Inventario`
---
-ALTER TABLE `Inventario`
-  ADD PRIMARY KEY (`codice`),
-  ADD KEY `codiceFornitore` (`codiceFornitore`);
-
---
--- Indici per le tabelle `Ordini`
---
-ALTER TABLE `Ordini`
-  ADD PRIMARY KEY (`codiceOggetto`),
-  ADD KEY `codiceFornitore` (`codiceFornitore`) USING BTREE;
-
---
--- Indici per le tabelle `Richieste`
---
-ALTER TABLE `Richieste`
-  ADD PRIMARY KEY (`nomeUfficio`,`codiceOggetto`);
-
---
--- Indici per le tabelle `StoricoOrdini`
---
-ALTER TABLE `StoricoOrdini`
-  ADD PRIMARY KEY (`codiceOggetto`),
-  ADD UNIQUE KEY `codiceFornitore` (`codiceFornitore`);
-
---
--- Indici per le tabelle `Uffici`
---
-ALTER TABLE `Uffici`
-  ADD PRIMARY KEY (`nome`);
-
---
--- Indici per le tabelle `Utenti`
---
-ALTER TABLE `Utenti`
-  ADD PRIMARY KEY (`username`);
+DROP TABLE IF EXISTS `Utenti`;
+CREATE TABLE IF NOT EXISTS `Utenti` (
+  `username` varchar(32) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  PRIMARY KEY (`username`)
+);
 
 --
 -- Limiti per le tabelle scaricate
@@ -192,9 +139,5 @@ ALTER TABLE `Ordini`
 --
 ALTER TABLE `Richieste`
   ADD CONSTRAINT `Richieste_ibfk_2` FOREIGN KEY (`nomeUfficio`) REFERENCES `Uffici` (`nome`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `Richieste_ibfk_3` FOREIGN KEY (`codiceOggetto`) REFERENCES `Inventario` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `Richieste_ibfk_3` FOREIGN KEY (`codiceOggetto`) REFERENCES `Inventario` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
