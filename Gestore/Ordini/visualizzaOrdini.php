@@ -37,7 +37,7 @@
 			// Create connection
 			$conn = mysqli_database();
 			
-			$sql = "SELECT quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore FROM Ordini, Inventario WHERE codiceOggetto=codice";
+			$sql = "SELECT quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore FROM Ordini, Oggetti WHERE codiceOggetto=codice";
 			$result = mysqli_query($conn, $sql);
 			
 			if (mysqli_num_rows($result) > 0)

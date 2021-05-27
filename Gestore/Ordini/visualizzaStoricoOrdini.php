@@ -37,7 +37,7 @@
 			// Create connection
 			$conn = mysqli_database();
 			
-			$sql = "SELECT id, quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore, data FROM StoricoOrdini, Inventario WHERE codiceOggetto=codice ORDER BY id DESC";
+			$sql = "SELECT id, quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore, data FROM StoricoOrdini, Oggetti WHERE codiceOggetto=codice ORDER BY id DESC";
 			$result = mysqli_query($conn, $sql);
 			
 

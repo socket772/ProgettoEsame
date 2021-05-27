@@ -48,7 +48,7 @@ $conn = mysqli_database();
 			
 				<select title='Scegli una opzione' data-live-search='true' data-live-search-placeholder='Cerca codice' name='code' id='code'>
 				<?php
-					$sqlInventario = "SELECT codice FROM Inventario ORDER BY codice";
+					$sqlInventario = "SELECT codice FROM Oggetti ORDER BY codice";
 					$resultInventario = mysqli_query($conn, $sqlInventario);
 					while($tmp = mysqli_fetch_assoc($resultInventario))
 					{

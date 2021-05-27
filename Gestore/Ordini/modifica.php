@@ -45,7 +45,7 @@
 		if($option == "add") //aggiunta oggetto nell'inventario
 		{
 
-			$sqlInventario = "SELECT * FROM Inventario WHERE codice='".$code."'";
+			$sqlInventario = "SELECT * FROM Oggetti WHERE codice='".$code."'";
 			$resultInventario = mysqli_query($conn, $sqlInventario);
 
 			$row = mysqli_fetch_assoc($resultInventario);
@@ -55,7 +55,7 @@
 		}
 
 		//recupero dati fornitore
-		$sql = "SELECT quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore FROM Ordini, Inventario WHERE codiceOggetto=codice AND codice='" .$code. "'";
+		$sql = "SELECT quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore FROM Ordini, Oggetti WHERE codiceOggetto=codice AND codice='" .$code. "'";
 		$result = mysqli_query($conn, $sql);
 		
 		if(mysqli_num_rows($result)==0)

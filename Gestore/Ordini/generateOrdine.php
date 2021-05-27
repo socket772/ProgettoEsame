@@ -7,10 +7,10 @@
 	$sqlTruncate = "TRUNCATE TABLE Ordini";
 	$resultTruncate = mysqli_query($conn, $sqlTruncate);
 
-	$sqlInventario = "SELECT * FROM Inventario WHERE (scorta+ordine)<scortaMinima";
+	$sqlInventario = "SELECT * FROM Oggetti WHERE (scorta+ordine)<scortaMinima";
 	$resultInventario = mysqli_query($conn, $sqlInventario);
 	
-//	$sqlOrdine = "SELECT codiceOggetto FROM Ordini"; UPDATE Inventario SET ordine=0;
+//	$sqlOrdine = "SELECT codiceOggetto FROM Ordini"; UPDATE Oggetti SET ordine=0;
 //	$resultOrdine = mysqli_query($conn, $sqlOrdine);
 	
 	while($row = mysqli_fetch_assoc($resultInventario))

@@ -44,7 +44,7 @@
 			$code = remove_injections($_POST["code"]);
 			$quantita = remove_injections($_POST["quantita"]);
 
-			$sqlPrezzo = "SELECT * FROM Inventario WHERE codice='".$code."'"; //Richiesta del prezzo unitario per aggiornare quello totale
+			$sqlPrezzo = "SELECT * FROM Oggetti WHERE codice='".$code."'"; //Richiesta del prezzo unitario per aggiornare quello totale
 			$resultPrezzo = mysqli_query($conn, $sqlPrezzo);
 			$row = mysqli_fetch_assoc($resultPrezzo);
 			$prezzoTot = $quantita*$row["prezzoUnitario"]; // Ricalcolo prezzo totale

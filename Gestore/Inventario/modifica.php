@@ -43,13 +43,13 @@
 
 			if($_GET['option'] == "add") //aggiunta oggetto nell'inventario
 			{
-				$sql = "INSERT INTO Inventario(codice) VALUES('".$code."')";
+				$sql = "INSERT INTO Oggetti(codice) VALUES('".$code."')";
 				$result = mysqli_query($conn, $sql);
 				echo $result;
 			}
 
 
-			$sql = "SELECT * FROM Inventario WHERE codice='".$code."'";
+			$sql = "SELECT * FROM Oggetti WHERE codice='".$code."'";
 			$result = mysqli_query($conn, $sql); //recupero dati inventario
 			
 			if(mysqli_num_rows($result)==0)

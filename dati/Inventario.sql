@@ -22,11 +22,11 @@ CREATE TABLE IF NOT EXISTS `Fornitori` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `Inventario`
+-- Struttura della tabella `Oggetti`
 --
 
-DROP TABLE IF EXISTS `Inventario`;
-CREATE TABLE IF NOT EXISTS `Inventario` (
+DROP TABLE IF EXISTS `Oggetti`;
+CREATE TABLE IF NOT EXISTS `Oggetti` (
   `codice` varchar(22) NOT NULL,
   `descrizione` text DEFAULT 'itemDesc',
   `pezziPerUnita` int(3) DEFAULT 0,
@@ -123,21 +123,21 @@ CREATE TABLE IF NOT EXISTS `Utenti` (
 --
 
 --
--- Limiti per la tabella `Inventario`
+-- Limiti per la tabella `Oggetti`
 --
-ALTER TABLE `Inventario`
+ALTER TABLE `Oggetti`
   ADD CONSTRAINT `Inventario_ibfk_1` FOREIGN KEY (`codiceFornitore`) REFERENCES `Fornitori` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `Ordini`
 --
 ALTER TABLE `Ordini`
-  ADD CONSTRAINT `Ordini_ibfk_1` FOREIGN KEY (`codiceOggetto`) REFERENCES `Inventario` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Ordini_ibfk_1` FOREIGN KEY (`codiceOggetto`) REFERENCES `Oggetti` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `Richieste`
 --
 ALTER TABLE `Richieste`
   ADD CONSTRAINT `Richieste_ibfk_2` FOREIGN KEY (`nomeUfficio`) REFERENCES `Uffici` (`nome`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `Richieste_ibfk_3` FOREIGN KEY (`codiceOggetto`) REFERENCES `Inventario` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Richieste_ibfk_3` FOREIGN KEY (`codiceOggetto`) REFERENCES `Oggetti` (`codice`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;

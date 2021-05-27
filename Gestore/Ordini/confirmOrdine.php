@@ -59,7 +59,7 @@
 				}
 				
 				//Aggionamento inventario
-				$sqlUpdate = "UPDATE Inventario SET ordine='".$quantita."' WHERE codice='".$codiceOggetto."'";
+				$sqlUpdate = "UPDATE Oggetti SET ordine='".$quantita."' WHERE codice='".$codiceOggetto."'";
 				$resultUpdate= mysqli_query($conn, $sqlUpdate);
 				if(mysqli_affected_rows($conn)>0)
 				{

@@ -36,7 +36,7 @@
 			include '../libs.php';
 			// Create connection
 			$conn = mysqli_database();
-			$sql = "SELECT * FROM Inventario";
+			$sql = "SELECT * FROM Oggetti";
 			$result = mysqli_query($conn, $sql); // esecuzione query
 
 			if (mysqli_num_rows($result) > 0)
