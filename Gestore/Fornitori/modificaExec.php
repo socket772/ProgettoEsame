@@ -37,7 +37,7 @@
 		include '../libs.php';
 
 		//Createconnection
-		$conn=mysqli_database();
+		$conn=mysqli_database("Inventario");
 		
 		//recupero dati
 		$code = remove_injections($_POST["code"]);

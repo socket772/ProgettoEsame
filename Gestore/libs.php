@@ -6,7 +6,7 @@ function remove_injections(String $string)
         '!' => '', '"' => '', '&' => '', '\'' => '', '(' => '', ')' => '','*' => '',
 		'+' => '', '/-' => '', ';' => '', '<' => '', '=' => '', '>' => '', 
         '\\' => '', '_' => '', '`' => '', '|' => '', '/_' => '', '#' => '',
-        'and' => '', 'drop' => '', 'truncate' => '', 'use' => '' );
+        'and' => '');
 
     foreach ($specChars as $k => $v)
     {
@@ -16,10 +16,10 @@ function remove_injections(String $string)
     return $t;
 }
 
-function mysqli_database()
+function mysqli_database(String $Database)
 {
-	$conn = new mysqli("localhost", "root", "", "Inventario");
-	
+    //se il sistema è UNIX based, per usare una porta diversa dall 3306 come hostname va inserito l'ip di loopback 127.0.0.1
+	$conn = new mysqli("127.0.0.1", "root", "", $Database);
 	if (!$conn)
 	{
 	  die("Connection failed: " . mysqli_connect_error());

@@ -37,7 +37,7 @@
 			include '../libs.php';
 			
 			// Create connection
-			$conn = mysqli_database();
+			$conn = mysqli_database("Inventario");
 			  
 			$code= remove_injections($_GET['code']);
 			$option= remove_injections($_GET['option']);

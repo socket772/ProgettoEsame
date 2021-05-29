@@ -34,7 +34,7 @@
 		<?php
 			include '../libs.php';
 			// Create connection
-			$conn = mysqli_database();
+			$conn = mysqli_database("Inventario");
 
 			$sqlGET = "SELECT * FROM Ordini";
 			$resultGET = mysqli_query($conn, $sqlGET);

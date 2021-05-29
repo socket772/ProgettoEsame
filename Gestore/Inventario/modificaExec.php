@@ -48,7 +48,7 @@
 			$codiceFornitore = $_POST["codiceFornitore"];
 			
 			// Create connection
-			$conn = mysqli_database();
+			$conn = mysqli_database("Inventario");
 			
 			$sql = "UPDATE Oggetti SET descrizione='".$descrizione."', pezziPerUnita='".$pezziPerUnita."', scorta='".$scorta."', scortaMinima='".$scortaMinima."', tipo='".$tipo."', prezzoUnitario='".$prezzoUnitario."', ordine='".$ordine."', consumoAnnuo='".$consumoAnnuo."', codiceFornitore='".$codiceFornitore."' WHERE codice='".$code."'";
 

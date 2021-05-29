@@ -41,7 +41,7 @@
 			
 			// Create connection
 			
-			$conn=mysqli_database();			
+			$conn=mysqli_database("Inventario");			
 			
 			
 			$sql = "SELECT * FROM Fornitori";

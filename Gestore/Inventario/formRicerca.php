@@ -1,7 +1,7 @@
 <?php
 include '../libs.php';
 // Create connection
-$conn = mysqli_database();
+$conn = mysqli_database("Inventario");
 ?>
 
 <html>

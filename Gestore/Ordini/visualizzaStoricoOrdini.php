@@ -35,7 +35,7 @@
 			
 			include '../libs.php';
 			// Create connection
-			$conn = mysqli_database();
+			$conn = mysqli_database("Inventario");
 			
 			$sql = "SELECT id, quantita, codiceOggetto, descrizione, prezzoTot, codiceFornitore, data FROM StoricoOrdini, Oggetti WHERE codiceOggetto=codice ORDER BY id DESC";
 			$result = mysqli_query($conn, $sql);

@@ -2,7 +2,7 @@
 			
 	include '../libs.php';
 	// Create connection
-	$conn = mysqli_database();
+	$conn = mysqli_database("Inventario");
 
 	$sqlTruncate = "TRUNCATE TABLE Ordini";
 	$resultTruncate = mysqli_query($conn, $sqlTruncate);
