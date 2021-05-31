@@ -61,7 +61,7 @@
 				exit();
 			}
 
-			echo "<table class='table'><form action='./modificaExec.php' method='POST'>";
+			echo "<table class='table table-striped table-hover table-bordered><form action='./modificaExec.php' method='POST'>";
 			echo "<thead class='thead-dark'><th>Riga</th><th>Dati inseriti</th></thead>";
 			echo "<input type='hidden' id='code' name='code' value='".$code."'>";
 
