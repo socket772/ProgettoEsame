@@ -19,7 +19,7 @@ function remove_injections(String $string)
 function mysqli_database(String $Database)
 {
     //se il sistema è UNIX based, per usare una porta diversa dall 3306 come hostname va inserito l'ip di loopback 127.0.0.1
-	$conn = new mysqli("127.0.0.1", "root", "", $Database);
+	$conn = new mysqli("127.0.0.1", "Inventario", "", $Database);
 	if (!$conn)
 	{
 	  die("Connection failed: " . mysqli_connect_error());

@@ -1,5 +1,4 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -10,32 +9,35 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `Inventario` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `Inventario`;
 
+DROP TABLE IF EXISTS `Fornitori`;
 CREATE TABLE IF NOT EXISTS `Fornitori` (
   `codice` varchar(16) NOT NULL,
   `nome` varchar(32) DEFAULT NULL,
   `mail` varchar(64) DEFAULT NULL,
   `impegnoDiSpesa` decimal(8,2) DEFAULT NULL,
-  `determina` int(4) DEFAULT 0,
+  `determina` int(4) DEFAULT NULL,
   `dataDetermina` date DEFAULT NULL,
-  `cig` varchar(32) DEFAULT 'fornitore_cig123',
+  `cig` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`codice`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+DROP TABLE IF EXISTS `Oggetti`;
 CREATE TABLE IF NOT EXISTS `Oggetti` (
   `codice` varchar(22) NOT NULL,
   `descrizione` text DEFAULT NULL,
-  `pezziPerUnita` int(3) DEFAULT 0,
-  `scorta` int(3) DEFAULT 0,
+  `pezziPerUnita` int(3) DEFAULT NULL,
+  `scorta` int(3) DEFAULT NULL,
   `scortaMinima` int(3) DEFAULT NULL,
   `tipo` char(1) DEFAULT NULL,
   `prezzoUnitario` decimal(8,2) DEFAULT NULL,
-  `ordine` int(3) DEFAULT 0,
-  `consumoAnnuo` int(3) DEFAULT 0,
+  `ordine` int(3) DEFAULT NULL,
+  `consumoAnnuo` int(3) DEFAULT NULL,
   `codiceFornitore` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`codice`),
   KEY `codiceFornitore` (`codiceFornitore`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+DROP TABLE IF EXISTS `Ordini`;
 CREATE TABLE IF NOT EXISTS `Ordini` (
   `quantita` int(4) DEFAULT 0,
   `codiceOggetto` varchar(22) NOT NULL,
@@ -43,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `Ordini` (
   PRIMARY KEY (`codiceOggetto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+DROP TABLE IF EXISTS `StoricoOrdini`;
 CREATE TABLE IF NOT EXISTS `StoricoOrdini` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantita` int(4) DEFAULT 0,
@@ -62,7 +65,6 @@ ALTER TABLE `Ordini`
 
 ALTER TABLE `StoricoOrdini`
   ADD CONSTRAINT `StoricoOrdini_ibfk_1` FOREIGN KEY (`codiceOggetto`) REFERENCES `Oggetti` (`codice`) ON DELETE NO ACTION ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
