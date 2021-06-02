@@ -47,7 +47,7 @@
 				
 
 				//Inserimento nello storico
-				$sqlMove = "INSERT INTO StoricoOrdini(quantita, codiceOggetto, prezzoTot, data) VALUES ('".$quantita."', '".$codiceOggetto."', '".$prezzoTot."', '".$data."')"; //Query di inserimento
+				$sqlMove = "INSERT INTO StoricoOrdini(quantita, codiceOggetto, prezzoTot, data) VALUES ('$quantita', '$codiceOggetto', '$prezzoTot', '$data')"; //Query di inserimento
 				$resultMove = mysqli_query($conn, $sqlMove);
 				if(mysqli_affected_rows($conn)>0)
 				{
@@ -59,7 +59,7 @@
 				}
 				
 				//Aggionamento inventario
-				$sqlUpdate = "UPDATE Oggetti SET ordine='".$quantita."' WHERE codice='".$codiceOggetto."'";
+				$sqlUpdate = "UPDATE Oggetti SET ordine='$quantita' WHERE codice='$codiceOggetto'";
 				$resultUpdate= mysqli_query($conn, $sqlUpdate);
 				if(mysqli_affected_rows($conn)>0)
 				{

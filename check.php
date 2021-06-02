@@ -1,51 +1,37 @@
 <?php
-	//admin
-	//c3284d0f94606de1fd2af172aba15bf3
-
-	header("Location: ./Gestore");
-//	$usr = $_POST['username'];
-//	$psw = $_POST['password'];
-	
+	session_start();
 	include './Gestore/libs.php';
-	$usr = remove_injections($_GET['username']);
-    $psw = remove_injections($_GET['password']);
-
-	echo $usr."<br>";
-	echo $psw."<br>";
-
-	$psw = md5(md5($psw));
-
+	//admin
+	//77e2edcc9b40441200e31dc57dbb8829
+	
 	// Create connection
-	$conn = mysqli_connect("localhost", "root", "", "Inventario");
-	// Check connection
-	if (!$conn)
-	{
-	  die("Connection failed: " . mysqli_connect_error());
-	}
+	$conn = mysqli_database("Utenti");
+//	header("Location: ./Gestore");
+	
+	
+	$usr = remove_injections($_POST['username']);
+    $psw = remove_injections($_POST['password']);
 
-	$sql = "SELECT password, username FROM Utenti WHERE username=='".$usr."'";
+	$psw = md5(md5(md5($psw)));
+
+	$sql = "SELECT username, password FROM Utenti WHERE username='$usr'";
 	$result = mysqli_query($conn,$sql);
-
 	$row = mysqli_fetch_assoc($result);
 
-/*	if($row['username']==$usr && $row['password']==$psw)
+
+	$chk = password_verify($psw, $row['password']);
+
+	mysqli_close($conn);
+
+	if($row['username']==$usr && $chk)
 	{
-        echo "Login effettuato";
-		setcookie("usernameInventarioLocale", $usr, time()+(14*24*60*60), "/","", 0);
-		setcookie("passwordInventarioLocale", $psw, time()+(14*24*60*60), "/","", 0);
-		echo "<script type = 'text/javascript'>  
-        function page_redirect()
-        {  
-        window.location = './Gestore';  
-        }  
-        setTimeout('page_redirect()', 1);  
-        </script>";
-        exit();
+		$_SESSION["username"] = $row['username'];
+		header("Location: ./Gestore");
 	}
     else
 	{
-        echo "login fallito";
+      header("Location: ./");
     }
 
-*/	
+	
 ?>

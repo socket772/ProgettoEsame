@@ -49,7 +49,7 @@
 		$cig = remove_injections($_POST["cig"]);
 		
 		
-		$sql = "UPDATE Fornitori SET nome='".$nome."', mail='".$mail."', impegnoDiSpesa='".$impegnoDiSpesa."', determina='".$determina."', dataDetermina='".$dataDetermina."', cig='".$cig."' WHERE codice='".$code."'";
+		$sql = "UPDATE Fornitori SET nome='$nome', mail='$mail', impegnoDiSpesa='$impegnoDiSpesa', determina='$determina', dataDetermina='$dataDetermina', cig='$cig' WHERE codice='$code'";
 		
 		if(mysqli_query($conn, $sql)) //esecuzione update
 			    echo "Dati aggiornati correttamente<br><br>";

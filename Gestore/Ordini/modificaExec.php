@@ -46,12 +46,12 @@
 
             if($quantita>0)
             {
-                $sqlPrezzo = "SELECT * FROM Oggetti WHERE codice='".$code."'"; //Richiesta del prezzo unitario per aggiornare quello totale
+                $sqlPrezzo = "SELECT * FROM Oggetti WHERE codice='$code'"; //Richiesta del prezzo unitario per aggiornare quello totale
                 $resultPrezzo = mysqli_query($conn, $sqlPrezzo);
                 $row = mysqli_fetch_assoc($resultPrezzo);
                 $prezzoTot = $quantita*$row["prezzoUnitario"]; // Ricalcolo prezzo totale
 
-                $sqlFinal = "UPDATE Ordini SET quantita='".$quantita."', prezzoTot='".$prezzoTot."' WHERE codiceOggetto='".$code."'"; //Query di aggiornamento
+                $sqlFinal = "UPDATE Ordini SET quantita='$quantita', prezzoTot='$prezzoTot' WHERE codiceOggetto='$code'"; //Query di aggiornamento
 
                 if(mysqli_query($conn, $sqlFinal))
                     echo "Dati aggiornati correttamente<br><br>";
@@ -60,7 +60,7 @@
             }
             else
             {
-                $sqlFinal = "DELETE FROM Ordini WHERE codiceOggetto='".$code."'"; //Query di aggiornamento
+                $sqlFinal = "DELETE FROM Ordini WHERE codiceOggetto='$code'"; //Query di aggiornamento
                 if(mysqli_query($conn, $sqlFinal))
                     echo "Dati aggiornati correttamente<br><br>";
                 else

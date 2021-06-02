@@ -17,7 +17,7 @@
 	{
 		$quantitaRichiesta = $row['scortaMinima']-$row['scorta']+$row['ordine']+0;
 		$prezzo = $quantitaRichiesta*$row['prezzoUnitario'];
-		$sql = "INSERT INTO Ordini (quantita, codiceOggetto, prezzoTot) VALUES ('".$quantitaRichiesta."', '".$row['codice']."', '".$prezzo."')";
+		$sql = "INSERT INTO Ordini (quantita, codiceOggetto, prezzoTot) VALUES ('$quantitaRichiesta', '".$row["codice"]."', '$prezzo')";
 		$result = mysqli_query($conn, $sql);
 	}
     header("Location: ./visualizzaOrdini.php");

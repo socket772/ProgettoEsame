@@ -34,7 +34,7 @@
         </div>
 		<div class=" container col-11">
 			<h2 class="display-2">Login</h2><br>
-			<form action="check.php" method="POST"> <!-Temporaneamente "GET"-!>
+			<form action="check.php" method="POST">
 				<label for='username'>Username</label>
 				<input type='text'id='username'name='username' value=''>
 				<br><br>
