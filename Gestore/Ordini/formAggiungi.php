@@ -1,4 +1,11 @@
 <?php
+	session_start();
+	if( !(isset($_SESSION['username']) || isset($_COOKIE['username'])) )
+	{
+		header("Location: ../../");
+	}
+?>
+<?php
 include '../libs.php';
 // Create connection
 $conn = mysqli_database("Inventario");

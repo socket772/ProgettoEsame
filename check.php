@@ -11,6 +11,7 @@
 	
 	$usr = remove_injections($_POST['username']);
     $psw = remove_injections($_POST['password']);
+	$rmb = isset($_POST['rmb']);
 
 	$psw = md5(md5(md5($psw)));
 
@@ -25,6 +26,9 @@
 
 	if($row['username']==$usr && $chk)
 	{
+		if($rmb)
+			setcookie("username", md5($row['username']), time()+60*60*24*7);
+		
 		$_SESSION["username"] = $row['username'];
 		header("Location: ./Gestore");
 	}

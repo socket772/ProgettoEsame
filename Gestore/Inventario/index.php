@@ -1,3 +1,10 @@
+<?php
+	session_start();
+	if( !(isset($_SESSION['username']) || isset($_COOKIE['username'])) )
+	{
+		header("Location: ../../");
+	}
+?>
 <html>
 <style><?php include '../stili/css/bootstrap-italia.min.css'; ?></style>
     <body>

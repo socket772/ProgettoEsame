@@ -1,11 +1,10 @@
 <?php
-/*
-	if(isset($_COOKIE["usernameInventarioLocale"]) && isset($_COOKIE["passwordInventarioLocale"]) 1==1)
+
+	if(isset($_COOKIE["username"]) && isset($_COOKIE["username"]))
 		{
 			header('./Gestore');
-			exit();
 		}
-*/
+
 ?>
 
 <html>
@@ -40,6 +39,9 @@
 				<br><br>
 				<label for='password'>Password</label>
 				<input type='password'id='password'name='password' value=''>
+				<br><br>
+				<label for='rmb'>Ricordami per 7 giorni</label>
+				<input type="checkbox" name="rmb" id="rmb" value="true">
 				<br><br>
 				<input class="btn btn-outline-secondary" type='submit'>
 				<input class="btn btn-outline-secondary" type='reset'>

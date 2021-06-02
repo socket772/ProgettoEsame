@@ -41,30 +41,27 @@
 
 			if (mysqli_num_rows($result) > 0)
 			{
-			// output data of each row
-			//$row["dato"]
-			echo "<table class='table table-striped table-hover table-bordered'>";
-			echo "<tr>";
-			echo "<thead class='thead-dark'><th>Codice</th> <th>Descrizione</th> <th>Pezzi per unita</th> <th>Scorta</th> <th>Scorta minima</th> <th>Tipo</th> <th>Prezzo unitario</th> <th>Ordine</th> <th>Consumo Annuo</th> <th>Codice fornitore</th></thead>";
-			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
-			{
-				echo "<tr>";
-				echo "<td>".$row["codice"]."</td>";
-				echo "<td>".$row["descrizione"]."</td>";
-				echo "<td>".$row["pezziPerUnita"]."</td>";
-				echo "<td>".$row["scorta"]."</td>";
-				echo "<td>".$row["scortaMinima"]."</td>";
-				echo "<td>".$row["tipo"]."</td>";
-				echo "<td>".$row["prezzoUnitario"]."</td>";
-				echo "<td>".$row["ordine"]."</td>";
-				echo "<td>".$row["consumoAnnuo"]."</td>";
-				echo "<td>".$row["codiceFornitore"]."</td>";
-				echo "</tr>";
+				// output data of each row
+				//$row["dato"]
+				echo "<table class='table table-striped table-hover table-bordered'>";
+				echo "<thead class='thead-dark'><th>Codice</th> <th>Descrizione</th> <th>Pezzi per unita</th> <th>Scorta</th> <th>Scorta minima</th> <th>Tipo</th> <th>Prezzo unitario</th> <th>Ordine</th> <th>Consumo Annuo</th> <th>Codice fornitore</th></thead>";
+				while($row = mysqli_fetch_assoc($result)) //output dati nel DB
+				{
+					echo "<tr>";
+					echo "<td>".$row["codice"]."</td>";
+					echo "<td>".$row["descrizione"]."</td>";
+					echo "<td>".$row["pezziPerUnita"]."</td>";
+					echo "<td>".$row["scorta"]."</td>";
+					echo "<td>".$row["scortaMinima"]."</td>";
+					echo "<td>".$row["tipo"]."</td>";
+					echo "<td>".$row["prezzoUnitario"]."</td>";
+					echo "<td>".$row["ordine"]."</td>";
+					echo "<td>".$row["consumoAnnuo"]."</td>";
+					echo "<td>".$row["codiceFornitore"]."</td>";
+					echo "</tr>";
+				}
+				echo "</table>";
 			}
-			echo "</table>";
-			}
-			
 			else
 			{
 			echo "La tabella e vuota";

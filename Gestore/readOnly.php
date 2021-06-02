@@ -9,7 +9,7 @@
         <br><br>
         <button class="btn btn-primary btn-block" onclick="window.location.href='./Ordini/visualizzaOrdini.php';">Visualizza ordini</button>
         <br><br>
-        <button class="btn btn-primary btn-block" onclick="window.location.href='./Richieste/visualizzaRichieste.php';">Visualizza richieste</button>
+        <button class="btn btn-primary btn-block" onclick="window.location.href='./Ordini/visualizzaStoricoOrdini.php';">Visualizza ordini</button>
 
         <script src="./stili/js/bootstrap-italia.bundle.min.js"></script>
     </body>
