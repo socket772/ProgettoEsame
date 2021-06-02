@@ -50,8 +50,10 @@
 			// Create connection
 			$conn = mysqli_database("Inventario");
 			
-			$sql = "UPDATE Oggetti SET descrizione='".$descrizione."', pezziPerUnita='".$pezziPerUnita."', scorta='".$scorta."', scortaMinima='".$scortaMinima."', tipo='".$tipo."', prezzoUnitario='".$prezzoUnitario."', ordine='".$ordine."', consumoAnnuo='".$consumoAnnuo."', codiceFornitore='".$codiceFornitore."' WHERE codice='".$code."'";
-
+			$sql = "UPDATE Oggetti SET descrizione='".$descrizione."', pezziPerUnita='".$pezziPerUnita."', scorta='".$scorta."', scortaMinima='".$scortaMinima."', tipo='".$tipo."', prezzoUnitario='".$prezzoUnitario."', ordine='".$ordine."', consumoAnnuo='".$consumoAnnuo."' WHERE codice='".$code."'";
+            
+            //, codiceFornitore='".$codiceFornitore."'
+            
             if(mysqli_query($conn, $sql)) //esecuzione update
 			    echo "Dati aggiornati correttamente<br><br>";
             else

@@ -108,8 +108,13 @@
 				echo "<td><input type='text'id='consumoAnnuo'name='consumoAnnuo' value='".$row["consumoAnnuo"]."'></td>";
 				echo "</tr>";
 
+				echo "<tr>";
+				echo "<td>Codice</td>";
+				echo "<td>".$row["codiceFornitore"]."</td>";
+				echo "</tr>";
 
-				$sqlFornitore = "SELECT codice FROM Fornitori ORDER BY codice";
+
+/*				$sqlFornitore = "SELECT codice FROM Fornitori ORDER BY codice";
 				$resultFornitore = mysqli_query($conn, $sqlFornitore);
 				echo "<tr>";
 				echo "<td><label for='codiceFornitore'>Codice fornitore prodotto: </label></td>";
@@ -122,6 +127,7 @@
 						echo "<option value='".$tmp["codice"]."'>".$tmp["codice"]."</options>";
 				}
 				echo "</select></div></td>";
+*/				
 				echo "</tr></table>";
 
 				echo"<br><br>";
