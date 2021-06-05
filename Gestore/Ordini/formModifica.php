@@ -1,12 +1,32 @@
 <?php
-	session_start();
-	if( !(isset($_SESSION['username']) || isset($_COOKIE['username'])) )
+    include '../libs.php';
+
+	if (session_status() !== PHP_SESSION_ACTIVE)
+    {
+        session_start();
+    }
+
+    if(isset($_COOKIE["remember"]))
+    {
+        setcookie(session_name(), $_COOKIE["PHPSESSID"],TimeLeft(true), "/");
+    }
+
+    $usr = $_COOKIE["username"];
+
+    $conn = mysqli_database("Utenti");
+    $sql = "SELECT username, password FROM Utenti WHERE username='$usr'";
+	$result = mysqli_query($conn,$sql);
+	$row = mysqli_fetch_assoc($result);
+
+    if( ($_COOKIE['username'] != $row["username"]) || !(password_verify(md5($_COOKIE["password"]), $row["password"])))
 	{
-		header("Location: ../../");
+        mysqli_close($conn);
+    	header("Location: ../");
 	}
+
+    mysqli_close($conn);
 ?>
 <?php
-include '../libs.php';
 // Create connection
 $conn = mysqli_database("Inventario");
 ?>

@@ -1,9 +1,30 @@
 <?php
-	session_start();
-	if( !(isset($_SESSION['username']) || isset($_COOKIE['username'])) )
+    include '../libs.php';
+
+	if (session_status() !== PHP_SESSION_ACTIVE)
+    {
+        session_start();
+    }
+
+    if(isset($_COOKIE["remember"]))
+    {
+        setcookie(session_name(), $_COOKIE["PHPSESSID"],TimeLeft(true), "/");
+    }
+
+    $usr = $_COOKIE["username"];
+
+    $conn = mysqli_database("Utenti");
+    $sql = "SELECT username, password FROM Utenti WHERE username='$usr'";
+	$result = mysqli_query($conn,$sql);
+	$row = mysqli_fetch_assoc($result);
+
+    if( ($_COOKIE['username'] != $row["username"]) || !(password_verify(md5($_COOKIE["password"]), $row["password"])))
 	{
-		header("Location: ../../");
+        mysqli_close($conn);
+    	header("Location: ../");
 	}
+
+    mysqli_close($conn);
 ?>
 <html>
 	<style><?php include '../stili/css/bootstrap-italia.min.css'; ?></style>
@@ -40,7 +61,6 @@
         </div>
 		<?php
 
-			include '../libs.php';
 			// Create connection
 			$conn = mysqli_database("Inventario");
 			
@@ -50,9 +70,12 @@
 
 			if($_GET['option'] == "add") //aggiunta oggetto nell'inventario
 			{
-				$sql = "INSERT INTO Oggetti(codice) VALUES('".$code."')";
+				$sqlFornitore = "SELECT codice FROM Fornitori ORDER BY codice";
+				$resultFornitore = mysqli_query($conn, $sqlFornitore);
+				$tmp = mysqli_fetch_assoc($resultFornitore);
+
+				$sql = "INSERT INTO Oggetti(codice, codiceFornitore) VALUES('$code', '".$tmp["codice"]."')";
 				$result = mysqli_query($conn, $sql);
-				echo $result;
 			}
 
 
@@ -96,7 +119,7 @@
 				echo "</tr>";
 
 				echo "<tr>";
-				echo "<td><label for='tipo'>Tipo prodotto: char (3)</label></td>";
+				echo "<td><label for='tipo'>Tipo prodotto: char (1)</label></td>";
 				echo "<td><input type='text'id='tipo'name='tipo' value='".$row["tipo"]."'></td>";
 				echo "</tr>";
 
@@ -115,8 +138,9 @@
 				echo "<td><input type='text'id='consumoAnnuo'name='consumoAnnuo' value='".$row["consumoAnnuo"]."'></td>";
 				echo "</tr>";
 
+
 				echo "<tr>";
-				echo "<td>Codice</td>";
+				echo "<td>Codice fornitori</td>";
 				echo "<td>".$row["codiceFornitore"]."</td>";
 				echo "</tr>";
 
