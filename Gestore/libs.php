@@ -1,4 +1,13 @@
 <?php
+
+function TimeLeft(bool $fromNow)
+{
+    $Days = 604800;
+    if($fromNow)
+        $Days = time()+$Days;
+    return $Days;
+}
+
 function remove_injections(String $string)
 {
     $t = $string;
@@ -25,5 +34,10 @@ function mysqli_database(String $Database)
 	  die("Connection failed: " . mysqli_connect_error());
 	}
 
-    return$conn;}
+    return$conn;
+}
+
+// https://youtu.be/dQw4w9WgXcQ
+
 ?>
+

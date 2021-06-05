@@ -1,14 +1,39 @@
 <?php
+    include './Gestore/libs.php';
 
-	if(isset($_COOKIE["username"]) && isset($_COOKIE["username"]))
+	if (session_status() !== PHP_SESSION_ACTIVE)
+    {
+        session_start();
+    }
+
+    if(isset($_COOKIE["remember"]))
+    {
+        setcookie(session_name(), $_COOKIE["PHPSESSID"],TimeLeft(true), "/");
+    }
+
+    $usr = $_COOKIE["username"];
+
+    $conn = mysqli_database("Utenti");
+    $sql = "SELECT username, password FROM Utenti WHERE username='$usr'";
+	$result = mysqli_query($conn,$sql);
+	$row = mysqli_fetch_assoc($result);
+
+	if(isset($_COOKIE['username']) && isset($_COOKIE['password']))
+	{
+		if( ($_COOKIE['username'] == $row["username"]) || password_verify(md5($_COOKIE["password"]), $row["password"]))
 		{
-			header('./Gestore');
+			mysqli_close($conn);
+			header("Location: ./Gestore");
 		}
+	}
+
+    mysqli_close($conn);
 
 ?>
 
 <html>
 	<style><?php include './Gestore/stili/css/bootstrap-italia.min.css'; ?></style>
+	<link rel="shortcut icon" href="../favico.ico" />
 	<body>
 		<div class="it-header-slim-wrapper">
             <div class="container">
