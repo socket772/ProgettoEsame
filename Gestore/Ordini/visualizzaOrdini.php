@@ -52,7 +52,7 @@
 			{
 				echo "<tr>";
 				echo "<td>".$row["quantita"]."</td>";
-				echo "<td>".$row["codiceOggetto"]."</td>";
+				echo "<td><a href='./modifica.php?code=".$row["codiceOggetto"]."&option=upt'>".$row["codiceOggetto"]."</a></td>";
 				echo "<td>".$row["descrizione"]."</td>";
 				echo "<td>".$row["prezzoTot"]."</td>";
 				echo "<td>".$row["codiceFornitore"]."</td>";

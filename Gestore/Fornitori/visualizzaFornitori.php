@@ -48,30 +48,30 @@
 			$result = mysqli_query($conn, $sql); // esecuzione query
 			if (mysqli_num_rows($result) > 0)
 			{
-			// output data of each row
-			//$row["dato"]
-			echo "<table class='table table-striped table-hover table-bordered'>";
-			echo "<tr>";
-			echo "<thead class='thead-dark'><th>Codice</th> <th>Nome</th> <th>eMail</th> <th>Impegno di spesa</th> <th>Determina</th> <th>Data determina</th> <th>CIG</th></thead>";
-			echo "</tr>";
-			while($row = mysqli_fetch_assoc($result)) //output dati nel DB
-			{
+				// output data of each row
+				//$row["dato"]
+				echo "<table class='table table-striped table-hover table-bordered'>";
 				echo "<tr>";
-				echo "<td>".$row["codice"]."</td>";
-				echo "<td>".$row["nome"]."</td>";
-				echo "<td>".$row["mail"]."</td>";
-				echo "<td>".$row["impegnoDiSpesa"]."</td>";
-				echo "<td>".$row["determina"]."</td>";
-				echo "<td>".$row["dataDetermina"]."</td>";
-				echo "<td>".$row["cig"]."</td>";
+				echo "<thead class='thead-dark'><th>Codice</th> <th>Nome</th> <th>eMail</th> <th>Impegno di spesa</th> <th>Determina</th> <th>Data determina</th> <th>CIG</th></thead>";
 				echo "</tr>";
-			}
-			echo "</table>";
+				while($row = mysqli_fetch_assoc($result)) //output dati nel DB
+				{
+					echo "<tr>";
+					echo "<td><a href='./modifica.php?code=".$row["codice"]."&option=upt'>".$row["codice"]."</a></td>";
+					echo "<td>".$row["nome"]."</td>";
+					echo "<td>".$row["mail"]."</td>";
+					echo "<td>".$row["impegnoDiSpesa"]."</td>";
+					echo "<td>".$row["determina"]."</td>";
+					echo "<td>".$row["dataDetermina"]."</td>";
+					echo "<td>".$row["cig"]."</td>";
+					echo "</tr>";
+				}
+				echo "</table>";
 			}
 			
 			else
 			{
-			echo "0 results";
+				echo "0 results";
 			}
 
 			mysqli_close($conn);

@@ -48,7 +48,7 @@
 				while($row = mysqli_fetch_assoc($result)) //output dati nel DB
 				{
 					echo "<tr>";
-					echo "<td>".$row["codice"]."</td>";
+					echo "<td><a href='./modifica.php?code=".$row["codice"]."&option=upt'>".$row["codice"]."</a></td>";
 					echo "<td>".$row["descrizione"]."</td>";
 					echo "<td>".$row["pezziPerUnita"]."</td>";
 					echo "<td>".$row["scorta"]."</td>";
