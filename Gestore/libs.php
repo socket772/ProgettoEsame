@@ -37,7 +37,5 @@ function mysqli_database(String $Database)
     return$conn;
 }
 
-// https://youtu.be/dQw4w9WgXcQ
-
 ?>
 
