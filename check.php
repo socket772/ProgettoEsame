@@ -3,9 +3,6 @@
 	include './Gestore/libs.php';
 	session_start();
 	
-	//admin
-	//77e2edcc9b40441200e31dc57dbb8829
-	
 	// Create connection
 	$conn = mysqli_database("Utenti");
 	
